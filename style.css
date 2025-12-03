@@ -292,10 +292,13 @@ a {
     background: var(--terracottaHover);
 }
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .homepage-hero {
-        max-height: 400px;
+        max-height: 400px;  
     }
+    .hero-btn {
+    margin-top: 15%;
+}
 
 }
 .intro {
