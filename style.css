@@ -1,0 +1,494 @@
+/*!
+Theme Name: Mulleborg
+Author: Clara Wäppling
+Version: 1.o
+*/
+
+
+
+/* ------------------ GOOGLE FONT ------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Autour+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&display=swap');
+
+/*COLOR VARIABLES*/
+:root {
+--cream: #FFF7EC;
+--terracotta: #E27F64;
+--forest: #567961;
+--sage: #9BB196;
+--wood: #675F3C;
+--tipi: #EDC678;
+--terracottaHover: #df7051;
+--black: #333;
+--blue: #4377BB;
+}
+
+/*--------------------*/
+
+body {
+    font-family:'Outfit';
+    font-weight: 200;
+    background: var(--cream);
+    margin: 0;
+    color: #333;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+
+/* ------------------ GLOBAL ELEMENTS ------------------ */
+h1, h2, h3, h4 {
+    text-align: center;
+    color: #333;
+    font-family: "Autour One", "sans-serif";
+}
+
+/* Default (desktop/tablet) heading sizes */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1rem; }
+
+
+ h1 {
+ font-family: 'Autour One', sans-serif;
+ }
+
+  h2 {
+ font-family: 'Autour One', sans-serif;
+ }
+
+
+p, div {
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color:#333; 
+}
+
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;    
+}
+
+.btn {
+  
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    font-family: 'Autour One', 'sans-serif';
+    text-transform: uppercase;
+    margin-top: 3rem;
+}
+
+.btn:hover, .hero-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+img {
+  display: block;
+  object-fit: cover;
+  width: 100vw;                  /* span full viewport width */
+  max-width: none;               /* remove any container max-width */              /* maintain aspect ratio */
+  height: 400px;
+  margin-left: 50%;              /* center align if inside constrained container */
+  transform: translateX(-50%);
+}
+/* ------------------ HEADER LAYOUT ------------------ */
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    padding: 0.5rem 1rem;
+    background: var(--cream);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.custom-logo {
+    max-height: 100px;
+    max-width: 100px;
+    height: auto;
+}
+
+.header-brandname {
+    font-size: 2em;
+    color: var(--forest);
+    font-family: 'Autour One';
+}
+
+/* ------------------ NAVIGATION ------------------ */
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    text-transform: uppercase;
+}
+
+.main-navigation a {
+    text-decoration: none;
+    color: var(--forest);
+    font-weight: 500;
+}
+
+.main-navigation a:hover {
+    color: var(--wood);
+}
+
+
+/* ------------------ FOOTER ------------------ */
+.site-footer {
+    background-color: var(--cream);
+    color: var(--black);
+    padding: 50px 20px;
+}
+
+.site-footer a:hover {
+   color: var(--sage);
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    display: flex;
+    justify-content: center;
+ 
+}
+
+.footer-nav{
+    ul {
+    list-style:none;
+    padding: 0;
+    }
+   
+}
+
+
+.footer-branding p {
+    text-align: center;
+}
+.footer-branding h2 {
+
+    margin-bottom: 10px;
+    margin-top: 0px;
+    color:var(--forest); 
+}
+
+
+.footer-copy {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 20px;
+}
+
+#footer-address, #footer-phone {
+    flex-direction: column;
+    color: var(--wood);
+    p {
+        margin:0;
+        padding: 0;
+    }
+    h4 {
+        margin-bottom: 0.2rem;
+ 
+    }
+}
+
+.footer-nav li::before {
+  content: '« ';  /* or '<< ' or any symbol/icon */
+  color: currentColor; /* matches link color */
+  margin-right: 4px;
+}
+
+.footer-cta-btn {
+    background: var(--blue);
+    color: #fff;
+    transition: color 0.3s;
+    
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-column {
+        margin: 20px 0;
+         flex: 1 1 100px;
+    }
+
+    .footer-branding p {
+    max-width: 15rem;
+}
+
+}
+
+/* ------------------ HOME / HERO ------------------ */
+/* Hero container */
+.homepage-hero {
+    position: relative;
+    width: 100%;
+    max-height: 800px; 
+    overflow: hidden;
+}
+
+/* Banner image */
+.homepage-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.084);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-btn {
+    margin-top: 33%;
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+    font-family: 'Autour One', 'sans-serif';
+    text-transform: uppercase;
+}
+
+.hero-btn:hover {
+    background: var(--terracottaHover);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .homepage-hero {
+        max-height: 400px;
+    }
+
+}
+
+.info-box {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+
+    h2 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 5rem;
+  }
+}
+
+.intro {
+
+    h2 {
+color: var(--forest);
+
+    }
+    p {
+        color: var(--black);
+    }
+    
+}
+.green-bg {
+    background-color: var(--sage);
+    color: var(--cream);
+    h2 {
+        color: var(--cream);
+    }
+}
+
+.orange-bg {
+    background-color: var(--terracotta);
+    color: var(--cream);
+    h2 {
+        color: var(--cream);
+    } 
+}
+
+.yellow-bg {
+    background-color: var(--tipi);
+    color: var(--cream);
+    h2 {
+        color: var(--cream);
+    } 
+}
+
+.yellow-btn {
+    background-color: var(--tipi);
+    color: var(--wood);
+}
+
+.green-btn {
+    background-color: var(--forest);
+    color: var(--cream);
+}
+
+
+
+.fullwidth-image-wrapper {
+  width: 100vw;                /* full viewport width */
+  margin-left: 50%;
+  transform: translateX(-50%); /* center the section if inside a container */
+  position: relative;
+}
+
+.fullwidth-image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ------------------ HAMBURGER ------------------ */
+
+#menu-toggle {
+    display: none; /* hidden on desktop */
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+
+#menu-toggle .bar {
+    width: 25px;            /* a bit longer helps symmetry */
+    height: 3px;
+    margin: 5px 0;
+    border-radius: 2px;
+    background: var(--forest);
+    transition: all 0.3s ease;
+}
+
+/* Top bar → rotate and move down */
+#menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(14px, 4px);
+    transform-origin: center;
+    background-color: var(--sage);
+}
+
+/* Middle bar → disappear */
+#menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+/* Bottom bar → rotate and move up */
+#menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(14px, -4px);
+    transform-origin: center;
+    background-color: var(--sage);
+}
+
+
+
+@media (max-width: 1124px) {
+    .header-inner {
+        flex-wrap: wrap;
+    }
+
+    #menu-toggle {
+        display: flex;
+    }
+
+    .main-navigation {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        margin-top: 0.5rem;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+    }
+
+    .main-navigation.active {
+        display: flex;
+        max-height: 500px;
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+
+/* ------------------ STAFF ------------------ */
+
+.staff-archive, .single-staff {
+    background-color: #567961;
+
+}
+
+.staff-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.staff-member {
+    flex: 1 1 calc(33.333% - 2rem);
+    text-align: center;
+}
+
+.staff-member img {
+    border-radius: 50%;
+    max-width: 200px;
+    height: auto;
+}
+
+.staff-job-title, .department-title {
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .staff-member {
+        flex: 1 1 100%;
+    }
+}
+
+.no-margin {
+    margin-top: 0px;
+}
