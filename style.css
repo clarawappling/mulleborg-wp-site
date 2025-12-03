@@ -111,22 +111,25 @@ img {
 .header-inner {
     display: flex;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content:space-between;
     padding: 0.5rem 1rem;
+    margin-top: 1rem;
     background: var(--cream);
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .custom-logo {
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 240px;
+    max-width: 240px;
     height: auto;
+    justify-self: flex-start;
 }
 
 .header-brandname {
-    font-size: 2em;
-    color: var(--forest);
+    font-size: 1.7em;
+    color: var(--wood);
     font-family: 'Autour One';
+    justify-self: flex-start;
 }
 
 /* ------------------ NAVIGATION ------------------ */

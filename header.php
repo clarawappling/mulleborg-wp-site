@@ -30,8 +30,6 @@
         }
         ?>
     </div>
-    <span class="header-brandname">Mulleborg</span>
-
             
 <!-- Hamburger button -->
 <button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
