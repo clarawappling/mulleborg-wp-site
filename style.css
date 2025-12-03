@@ -98,15 +98,6 @@ a {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-img {
-  display: block;
-  object-fit: cover;
-  width: 100vw;                  /* span full viewport width */
-  max-width: none;               /* remove any container max-width */              /* maintain aspect ratio */
-  height: 400px;
-  margin-left: 50%;              /* center align if inside constrained container */
-  transform: translateX(-50%);
-}
 /* ------------------ HEADER LAYOUT ------------------ */
 .header-inner {
     display: flex;
@@ -115,7 +106,7 @@ img {
     padding: 0.5rem 1rem;
     margin-top: 1rem;
     background: var(--cream);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
 .custom-logo {
@@ -158,6 +149,8 @@ img {
     background-color: var(--cream);
     color: var(--black);
     padding: 50px 20px;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
+
 }
 
 .site-footer a:hover {
@@ -171,6 +164,7 @@ img {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+ 
 }
 
 .footer-column {
@@ -304,13 +298,29 @@ img {
     }
 
 }
-
-.info-box {
+.intro {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 5rem;
 
     h2 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 5rem;
+  }
+}
+.info-box{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 5rem;
+
+    p {
+        color: var(--black);
+    }
+
+    h2 {
+        color: var(--forest);
         padding-left: 2rem;
         padding-right: 2rem;
         margin-bottom: 1rem;
@@ -348,6 +358,7 @@ color: var(--forest);
 .yellow-bg {
     background-color: var(--tipi);
     color: var(--cream);
+    justify-content: flex-start;
     h2 {
         color: var(--cream);
     } 
@@ -365,19 +376,27 @@ color: var(--forest);
 
 
 
-.fullwidth-image-wrapper {
+.image-wrapper {
   width: 100vw;                /* full viewport width */
   margin-left: 50%;
   transform: translateX(-50%); /* center the section if inside a container */
   position: relative;
 }
 
-.fullwidth-image-wrapper img {
+.image-wrapper img {
   display: block;
-  width: 100%;
-  height: auto;
+  object-fit: cover;
+  width: 100vw;                  /* span full viewport width */
+  max-width: none;               /* remove any container max-width */              /* maintain aspect ratio */
+  height: 400px;
+  margin-left: 50%;              /* center align if inside constrained container */
+  transform: translateX(-50%);
+
 }
 
+.desktop {
+    display: none;
+}
 /* ------------------ HAMBURGER ------------------ */
 
 #menu-toggle {
@@ -494,4 +513,77 @@ color: var(--forest);
 
 .no-margin {
     margin-top: 0px;
+}
+
+/* ------HOME PAGE IMAGE FIXES FOR LARGER SCREENS--------*/
+@media (min-width: 1300px) {
+  .section-box {
+    display: flex;
+    flex-direction: column;
+    max-width: 430px;
+  }
+  .sections-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 3rem;
+   
+
+  }
+
+  .info-box {
+    min-height: 25rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+
+    h2 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+  }
+}
+  .image-wrapper {
+  width: unset;                /* full viewport width */
+  margin-left: unset;
+  transform: unset; /* center the section if inside a container */
+  position: unset;
+  height: 430px;
+}
+
+.image-wrapper img {
+  display: unset;
+  object-fit: unset ;
+  width: unset;                  /* span full viewport width */
+  max-width: unset;               /* remove any container max-width */              /* maintain aspect ratio */
+  height: unset;
+  margin-left: unset;              /* center align if inside constrained container */
+  transform: unset;
+  border-radius: 40px 40px 0px 0px;
+}
+
+.green-bg {
+   border-radius: 0px 0px 0px 40px;
+}
+
+.orange-bg {
+ border-radius: 0px 0px 0px 0px;
+}
+
+.yellow-bg {
+ border-radius: 0px 0px 30px 0px;
+}
+
+.homepage-hero {
+    display: none;
+}
+
+.mobile {
+    display: none;
+}
+
+.desktop {
+    display: flex;
+}
 }
