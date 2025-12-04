@@ -2,7 +2,7 @@
 /* Template Name: Outdoors Page */
 get_header(); 
 ?>
-<div class="outdoors-page">
+<div class="sections-wrapper">
 <?php if ($outdoors_image = get_field('outdoors_image')) : ?>
         <div class="image-wrapper">
             <img src="<?php echo esc_url($outdoors_image['url']); ?>" alt="<?php echo esc_attr($outdoors_image['alt']); ?>">

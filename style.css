@@ -398,6 +398,8 @@ color: var(--forest);
   margin-left: 50%;
   transform: translateX(-50%); /* center the section if inside a container */
   position: relative;
+   overflow: visible;
+    z-index: 0;
 }
 
 .image-wrapper img {
