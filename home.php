@@ -7,102 +7,149 @@ get_header();
     <div class="homepage-hero">
         <?php the_post_thumbnail('large', ['class' => 'homepage-banner']); ?>
         <div class="hero-overlay">
-<?php 
-$hero_link = get_field('hero_button_page') ?: '#';
-$hero_text = get_field('hero_button_text') ?: 'SÖK PLATS';
-?>
+            <?php 
+            $hero_link = get_field('hero_button_page');
+            $hero_text = get_field('hero_button_text');
+            ?>
 
-<a href="<?php echo esc_url($hero_link); ?>" class="hero-btn">
-    <?php echo esc_html($hero_text); ?>
-</a>
-
+            <?php if ($hero_link || $hero_text) : ?>
+                <a href="<?php echo esc_url($hero_link); ?>" class="hero-btn">
+                    <?php echo esc_html($hero_text); ?>
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 <?php endif; ?>
 
-<!-- Intro Section -->
+<!-- Intro Section Mobile -->
+<?php 
+$intro_title = get_field('intro_title');
+$intro_text  = get_field('intro_text');
+?>
+
+<?php if ($intro_title || $intro_text) : ?>
 <div class="flex intro mobile">
-   
-    <h2><?php echo esc_html(get_field('intro_title') ?: 'Världens första I ur och skur-förskola'); ?></h2>
-
-    <div>
-        <?php echo wp_kses_post(get_field('intro_text') ?: 
-        'På en stor kuperad naturtomt med kåta, snickarbod, vindskydd, kompost, höns och äppelträd hittar du förskolan Mulleborg.
-        Vid de två intilliggande sjöarna paddlar vi på somrarna kanot - och åker skridskor på vintern.'); ?>
-    </div>
-
+    <?php if ($intro_title) : ?>
+        <h2><?php echo esc_html($intro_title); ?></h2>
+    <?php endif; ?>
+    <?php if ($intro_text) : ?>
+        <div><?php echo wp_kses_post($intro_text); ?></div>
+    <?php endif; ?>
 </div>
+<?php endif; ?>
+
 <div class="sections-wrapper home-page">
+
 <!-- Green Section -->
+<?php 
+$green_image = get_field('green_box_image');
+$green_title = get_field('green_box_title');
+$green_text  = get_field('green_box_text');
+$green_btn_page = get_field('green_box_button_page');
+$green_btn_text = get_field('green_box_button_text');
+?>
+
+<?php if ($green_image || $green_title || $green_text || $green_btn_page || $green_btn_text) : ?>
 <div class="section-box">
-     <?php if ($green_image = get_field('green_box_image')) : ?>
+    <?php if ($green_image) : ?>
         <div class="image-wrapper">
             <img src="<?php echo esc_url($green_image['url']); ?>" alt="<?php echo esc_attr($green_image['alt']); ?>">
         </div>
     <?php endif; ?>
-<div class="flex green-bg info-box">
-    <h2><?php echo esc_html(get_field('green_box_title')); ?></h2>
-    <div>
-        <?php echo wp_kses_post(get_field('green_box_text')); ?>
+
+    <div class="flex green-bg info-box">
+        <?php if ($green_title) : ?>
+            <h2><?php echo esc_html($green_title); ?></h2>
+        <?php endif; ?>
+
+        <?php if ($green_text) : ?>
+            <div><?php echo wp_kses_post($green_text); ?></div>
+        <?php endif; ?>
+
+        <?php if ($green_btn_page || $green_btn_text) : ?>
+            <a href="<?php echo esc_url($green_btn_page); ?>" class="btn yellow-btn">
+                <?php echo esc_html($green_btn_text); ?>
+            </a>
+        <?php endif; ?>
     </div>
-<?php 
-    $green_box_button_page = get_field('green_box_button_page') ?: '#';
-    $green_box_button_text = get_field('green_box_button_text') ?: 'Läs mer';
-?>
-
-<a href="<?php echo esc_url($green_box_button_page); ?>" class="btn yellow-btn">
-    <?php echo esc_html($green_box_button_text); ?>
-</a>    
-
-</div></div>
+</div>
+<?php endif; ?>
 
 <!-- Orange Section -->
-<div class="section-box">
-     <?php if ($orange_box_image = get_field('orange_box_image')) : ?>
-        <div class="image-wrapper">
-            <img src="<?php echo esc_url($orange_box_image['url']); ?>" alt="<?php echo esc_attr($orange_box_image['alt']); ?>">
-        </div>
-    <?php endif; ?>
-<div class="flex orange-bg info-box">
-    <h2><?php echo esc_html(get_field('orange_box_title')); ?></h2>
-    <div>
-        <?php echo wp_kses_post(get_field('orange_box_text')); ?>
-    </div>
 <?php 
-$orange_box_button_page = get_field('orange_box_button_page') ?: '#';
-$orange_box_button_text = get_field('orange_box_button_text') ?: 'Läs mer';
+$orange_image = get_field('orange_box_image');
+$orange_title = get_field('orange_box_title');
+$orange_text  = get_field('orange_box_text');
+$orange_btn_page = get_field('orange_box_button_page');
+$orange_btn_text = get_field('orange_box_button_text');
 ?>
 
-<a href="<?php echo esc_url($orange_box_button_page); ?>" class="btn green-btn">
-    <?php echo esc_html($orange_box_button_text); ?>
-</a>    
-</div></div>
-
-<!-- Yellow Section -->
- <div class="section-box">
-     <?php if ($yellow_box_image = get_field('yellow_box_image')) : ?>
+<?php if ($orange_image || $orange_title || $orange_text || $orange_btn_page || $orange_btn_text) : ?>
+<div class="section-box">
+    <?php if ($orange_image) : ?>
         <div class="image-wrapper">
-            <img src="<?php echo esc_url($yellow_box_image['url']); ?>" alt="<?php echo esc_attr($yellow_box_image['alt']); ?>">
+            <img src="<?php echo esc_url($orange_image['url']); ?>" alt="<?php echo esc_attr($orange_image['alt']); ?>">
         </div>
     <?php endif; ?>
-<div class="flex yellow-bg info-box">
-    <h2><?php echo esc_html(get_field('yellow_box_title')); ?></h2>
-    <div>
-        <?php echo wp_kses_post(get_field('yellow_box_text')); ?>
-    </div>
 
-</div></div></div>
-<!-- Intro Section -->
-<div class="flex intro desktop">
-   
-    <h2><?php echo esc_html(get_field('intro_title') ?: 'Världens första I ur och skur-förskola'); ?></h2>
+    <div class="flex orange-bg info-box">
+        <?php if ($orange_title) : ?>
+            <h2><?php echo esc_html($orange_title); ?></h2>
+        <?php endif; ?>
 
-    <div>
-        <?php echo wp_kses_post(get_field('intro_text') ?: 
-        'På en stor kuperad naturtomt med kåta, snickarbod, vindskydd, kompost, höns och äppelträd hittar du förskolan Mulleborg.
-        Vid de två intilliggande sjöarna paddlar vi på somrarna kanot - och åker skridskor på vintern.'); ?>
+        <?php if ($orange_text) : ?>
+            <div><?php echo wp_kses_post($orange_text); ?></div>
+        <?php endif; ?>
+
+        <?php if ($orange_btn_page || $orange_btn_text) : ?>
+            <a href="<?php echo esc_url($orange_btn_page); ?>" class="btn green-btn">
+                <?php echo esc_html($orange_btn_text); ?>
+            </a>
+        <?php endif; ?>
     </div>
+</div>
+<?php endif; ?>
+
+<!-- Yellow Section -->
+<?php 
+$yellow_image = get_field('yellow_box_image');
+$yellow_title = get_field('yellow_box_title');
+$yellow_text  = get_field('yellow_box_text');
+?>
+
+<?php if ($yellow_image || $yellow_title || $yellow_text) : ?>
+<div class="section-box">
+    <?php if ($yellow_image) : ?>
+        <div class="image-wrapper">
+            <img src="<?php echo esc_url($yellow_image['url']); ?>" alt="<?php echo esc_attr($yellow_image['alt']); ?>">
+        </div>
+    <?php endif; ?>
+
+    <div class="flex yellow-bg info-box">
+        <?php if ($yellow_title) : ?>
+            <h2><?php echo esc_html($yellow_title); ?></h2>
+        <?php endif; ?>
+
+        <?php if ($yellow_text) : ?>
+            <div><?php echo wp_kses_post($yellow_text); ?></div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>
 
 </div>
+
+<!-- Intro Section Desktop -->
+<?php if ($intro_title || $intro_text) : ?>
+<div class="flex intro desktop">
+    <?php if ($intro_title) : ?>
+        <h2><?php echo esc_html($intro_title); ?></h2>
+    <?php endif; ?>
+
+    <?php if ($intro_text) : ?>
+        <div><?php echo wp_kses_post($intro_text); ?></div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
 
 <?php get_footer(); ?>
