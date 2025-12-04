@@ -46,12 +46,12 @@ $hero_text = get_field('hero_button_text') ?: 'SÖK PLATS';
         <?php echo wp_kses_post(get_field('green_box_text')); ?>
     </div>
 <?php 
-    $yellow_btn_link = get_field('green_box_button_page') ?: '#';
-    $yellow_btn_text = get_field('green_box_button_text') ?: 'Läs mer';
+    $green_box_button_page = get_field('green_box_button_page') ?: '#';
+    $green_box_button_text = get_field('green_box_button_text') ?: 'Läs mer';
 ?>
 
-<a href="<?php echo esc_url($yellow_btn_link); ?>" class="btn yellow-btn">
-    <?php echo esc_html($yellow_btn_text); ?>
+<a href="<?php echo esc_url($green_box_button_page); ?>" class="btn yellow-btn">
+    <?php echo esc_html($green_box_button_text); ?>
 </a>    
 
 </div></div>
@@ -69,12 +69,12 @@ $hero_text = get_field('hero_button_text') ?: 'SÖK PLATS';
         <?php echo wp_kses_post(get_field('orange_box_text')); ?>
     </div>
 <?php 
-$green_btn_link = get_field('orange_box_button_page') ?: '#';
-$green_btn_text = get_field('orange_box_button_text') ?: 'Läs mer';
+$orange_box_button_page = get_field('orange_box_button_page') ?: '#';
+$orange_box_button_text = get_field('orange_box_button_text') ?: 'Läs mer';
 ?>
 
-<a href="<?php echo esc_url($green_btn_link); ?>" class="btn green-btn">
-    <?php echo esc_html($green_btn_text); ?>
+<a href="<?php echo esc_url($orange_box_button_page); ?>" class="btn green-btn">
+    <?php echo esc_html($orange_box_button_text); ?>
 </a>    
 </div></div>
 
