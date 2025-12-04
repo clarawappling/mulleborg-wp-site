@@ -32,7 +32,7 @@ $hero_text = get_field('hero_button_text') ?: 'SÖK PLATS';
     </div>
 
 </div>
-<div class="sections-wrapper">
+<div class="sections-wrapper home-page">
 <!-- Green Section -->
 <div class="section-box">
      <?php if ($green_image = get_field('green_box_image')) : ?>
@@ -58,9 +58,9 @@ $hero_text = get_field('hero_button_text') ?: 'SÖK PLATS';
 
 <!-- Orange Section -->
 <div class="section-box">
-     <?php if ($green_image = get_field('orange_box_image')) : ?>
+     <?php if ($orange_box_image = get_field('orange_box_image')) : ?>
         <div class="image-wrapper">
-            <img src="<?php echo esc_url($green_image['url']); ?>" alt="<?php echo esc_attr($green_image['alt']); ?>">
+            <img src="<?php echo esc_url($orange_box_image['url']); ?>" alt="<?php echo esc_attr($orange_box_image['alt']); ?>">
         </div>
     <?php endif; ?>
 <div class="flex orange-bg info-box">
@@ -80,9 +80,9 @@ $orange_box_button_text = get_field('orange_box_button_text') ?: 'Läs mer';
 
 <!-- Yellow Section -->
  <div class="section-box">
-     <?php if ($green_image = get_field('yellow_box_image')) : ?>
+     <?php if ($yellow_box_image = get_field('yellow_box_image')) : ?>
         <div class="image-wrapper">
-            <img src="<?php echo esc_url($green_image['url']); ?>" alt="<?php echo esc_attr($green_image['alt']); ?>">
+            <img src="<?php echo esc_url($yellow_box_image['url']); ?>" alt="<?php echo esc_attr($yellow_box_image['alt']); ?>">
         </div>
     <?php endif; ?>
 <div class="flex yellow-bg info-box">
