@@ -28,7 +28,7 @@ $intro_text  = get_field('intro_text');
 ?>
 
 <?php if ($intro_title || $intro_text) : ?>
-<div class="flex intro mobile">
+<div class="flex intro">
     <?php if ($intro_title) : ?>
         <h2><?php echo esc_html($intro_title); ?></h2>
     <?php endif; ?>
@@ -138,18 +138,4 @@ $yellow_text  = get_field('yellow_box_text');
 <?php endif; ?>
 
 </div>
-
-<!-- Intro Section Desktop -->
-<?php if ($intro_title || $intro_text) : ?>
-<div class="flex intro desktop">
-    <?php if ($intro_title) : ?>
-        <h2><?php echo esc_html($intro_title); ?></h2>
-    <?php endif; ?>
-
-    <?php if ($intro_text) : ?>
-        <div><?php echo wp_kses_post($intro_text); ?></div>
-    <?php endif; ?>
-</div>
-<?php endif; ?>
-
 <?php get_footer(); ?>
