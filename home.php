@@ -21,14 +21,19 @@ get_header();
     </div>
 <?php endif; ?>
 
-<!-- Intro Section Mobile -->
+<!-- Intro Section -->
 <?php 
 $intro_title = get_field('intro_title');
 $intro_text  = get_field('intro_text');
 ?>
 
 <?php if ($intro_title || $intro_text) : ?>
-<div class="flex intro">
+<div class="section">
+    <div class="section-divider divider-to-cream">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
+    <div class="flex intro">
+
     <?php if ($intro_title) : ?>
         <h2><?php echo esc_html($intro_title); ?></h2>
     <?php endif; ?>
@@ -37,10 +42,14 @@ $intro_text  = get_field('intro_text');
     <?php endif; ?>
 </div>
 <?php endif; ?>
-
+<div class="section">
+    <div class="section-divider divider-to-cream">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-bottom.svg' ); ?>
+</div></div>
 <div class="sections-wrapper home-page">
 
 <!-- Green Section -->
+ 
 <?php 
 $green_image = get_field('green_box_image');
 $green_title = get_field('green_box_title');
@@ -54,10 +63,16 @@ $green_btn_text = get_field('green_box_button_text');
     <?php if ($green_image) : ?>
         <div class="image-wrapper">
             <img src="<?php echo esc_url($green_image['url']); ?>" alt="<?php echo esc_attr($green_image['alt']); ?>">
+  
         </div>
-    <?php endif; ?>
 
+    <?php endif; ?>
+<div class="section">
+    <div class="section-divider divider-to-green">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/scallop.svg' ); ?>
+</div></div>
     <div class="flex green-bg info-box extended-height">
+        
         <?php if ($green_title) : ?>
             <h2><?php echo esc_html($green_title); ?></h2>
         <?php endif; ?>
@@ -71,8 +86,13 @@ $green_btn_text = get_field('green_box_button_text');
                 <?php echo esc_html($green_btn_text); ?>
             </a>
         <?php endif; ?>
+        
     </div>
 </div>
+<div class="section">
+    <div class="section-divider divider-to-green">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-bottom.svg' ); ?>
+</div></div>
 <?php endif; ?>
 
 <!-- Orange Section -->
@@ -86,12 +106,16 @@ $orange_btn_text = get_field('orange_box_button_text');
 
 <?php if ($orange_image || $orange_title || $orange_text || $orange_btn_page || $orange_btn_text) : ?>
 <div class="section-box">
+    
     <?php if ($orange_image) : ?>
         <div class="image-wrapper">
             <img src="<?php echo esc_url($orange_image['url']); ?>" alt="<?php echo esc_attr($orange_image['alt']); ?>">
         </div>
     <?php endif; ?>
-
+<div class="section">
+    <div class="section-divider divider-to-orange">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
     <div class="flex orange-bg info-box extended-height">
         <?php if ($orange_title) : ?>
             <h2><?php echo esc_html($orange_title); ?></h2>
@@ -108,6 +132,10 @@ $orange_btn_text = get_field('orange_box_button_text');
         <?php endif; ?>
     </div>
 </div>
+<div class="section">
+    <div class="section-divider divider-to-orange">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-bottom.svg' ); ?>
+</div></div>
 <?php endif; ?>
 
 <!-- Yellow Section -->
@@ -124,7 +152,10 @@ $yellow_text  = get_field('yellow_box_text');
             <img src="<?php echo esc_url($yellow_image['url']); ?>" alt="<?php echo esc_attr($yellow_image['alt']); ?>">
         </div>
     <?php endif; ?>
-
+<div class="section">
+    <div class="section-divider divider-to-yellow">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
     <div class="flex yellow-bg info-box extended-height">
         <?php if ($yellow_title) : ?>
             <h2><?php echo esc_html($yellow_title); ?></h2>
