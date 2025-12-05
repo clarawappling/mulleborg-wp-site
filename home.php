@@ -57,7 +57,7 @@ $green_btn_text = get_field('green_box_button_text');
         </div>
     <?php endif; ?>
 
-    <div class="flex green-bg info-box">
+    <div class="flex green-bg info-box extended-height">
         <?php if ($green_title) : ?>
             <h2><?php echo esc_html($green_title); ?></h2>
         <?php endif; ?>
@@ -92,7 +92,7 @@ $orange_btn_text = get_field('orange_box_button_text');
         </div>
     <?php endif; ?>
 
-    <div class="flex orange-bg info-box">
+    <div class="flex orange-bg info-box extended-height">
         <?php if ($orange_title) : ?>
             <h2><?php echo esc_html($orange_title); ?></h2>
         <?php endif; ?>
@@ -125,7 +125,7 @@ $yellow_text  = get_field('yellow_box_text');
         </div>
     <?php endif; ?>
 
-    <div class="flex yellow-bg info-box">
+    <div class="flex yellow-bg info-box extended-height">
         <?php if ($yellow_title) : ?>
             <h2><?php echo esc_html($yellow_title); ?></h2>
         <?php endif; ?>

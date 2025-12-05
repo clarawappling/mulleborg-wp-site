@@ -13,15 +13,14 @@ get_header();
 
     <?php if ($hero_image) : ?>
      
-        <div class="homepage-banner">
             <img 
                 src="<?php echo esc_url($hero_image['url']); ?>" 
                 alt="<?php echo esc_attr($hero_image['alt']); ?>"
             >
-        </div>
+    
     <?php endif; ?>
          <?php if ($heading || $text_section) : ?> 
-            <div class="info-box flex yellow-bg">
+            <div class="info-box flex yellow-bg" id="staff-intro">
               <?php if ($heading) : ?>
             <h2><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
