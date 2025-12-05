@@ -8,17 +8,17 @@ get_header();
     $hero_image = $settings_page ? get_field('staff_archive_hero_image', $settings_page->ID) : null;
     $heading = $settings_page ? get_field('staff_archive_heading', $settings_page->ID) : null;
     $text_section = $settings_page ? get_field('staff_archive_text_section', $settings_page->ID) : null; ?>
-
-<div class="staff-archive">
-
+    <div class="image-wrapper">
     <?php if ($hero_image) : ?>
-     
             <img 
                 src="<?php echo esc_url($hero_image['url']); ?>" 
                 alt="<?php echo esc_attr($hero_image['alt']); ?>"
-            >
-    
+            > 
     <?php endif; ?>
+    </div>
+<div class="staff-archive">
+
+
          <?php if ($heading || $text_section) : ?> 
             <div class="info-box flex yellow-bg" id="staff-intro">
               <?php if ($heading) : ?>
