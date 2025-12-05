@@ -107,8 +107,44 @@ a {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/*--------SVG DIVIDERS------*/
+.section {
+    position: relative;
+}
 
+.section-divider {
+    position: absolute;
+    bottom: -30px; /* this makes the scallops hang out */
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 10; /* stays on top */
+}
 
+.section-divider svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    overflow: visible;
+   
+}
+
+.divider-to-green svg{
+    color: var(--sage);
+}
+
+.divider-to-cream svg{
+    color: var(--cream);
+}
+
+.divider-to-orange svg{
+    color: var(--terracotta);
+}
+
+.divider-to-yellow svg{
+    color: var(--tipi);
+}
 /* ------------------ HEADER LAYOUT ------------------ */
 .header-inner {
     display: flex;
