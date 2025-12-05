@@ -510,31 +510,42 @@ color: var(--forest);
 .staff-grid {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
     background-color: var(--tipi);
 }
 
 .staff-member {
-    flex: 1 1 calc(33.333% - 2rem);
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color:var(--wood);
 }
 
-.staff-member img {
+.staff-image-wrapper {
+    padding: 3rem;
+}
+
+.staff-image-wrapper img {
     border-radius: 50%;
-    max-width: 200px;
+    max-width: 120px;
     height: auto;
 }
 
-.staff-job-title, .department-title {
-    font-style: italic;
-    margin-top: 0.5rem;
+.staff-name {
+font-weight: 400;
 }
+.staff-member-info {
+    text-align: center;
+ p {
+    margin: 0;
+ }
+}
+
+
 
 /* Responsive */
 @media (max-width: 768px) {
-    .staff-member {
-        flex: 1 1 100%;
-    }
+
 }
 
 .no-margin {

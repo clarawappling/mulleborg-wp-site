@@ -7,18 +7,19 @@ get_header();
     $settings_page = get_page_by_path('staff-archive-settings');
     $hero_image = $settings_page ? get_field('staff_archive_hero_image', $settings_page->ID) : null;
     $heading = $settings_page ? get_field('staff_archive_heading', $settings_page->ID) : null;
-    $text_section = $settings_page ? get_field('staff_archive_text_section', $settings_page->ID) : null;
+    $text_section = $settings_page ? get_field('staff_archive_text_section', $settings_page->ID) : null; ?>
 
-    if ($hero_image) : ?>
-        <div class="image-wrapper">
+<div class="staff-archive">
+
+    <?php if ($hero_image) : ?>
+     
+        <div class="homepage-banner">
             <img 
                 src="<?php echo esc_url($hero_image['url']); ?>" 
                 alt="<?php echo esc_attr($hero_image['alt']); ?>"
             >
         </div>
     <?php endif; ?>
-</div>
-<div class="staff-archive">
          <?php if ($heading || $text_section) : ?> 
             <div class="info-box flex yellow-bg">
               <?php if ($heading) : ?>
@@ -35,19 +36,19 @@ get_header();
    
             <?php while ( have_posts() ) : the_post(); ?>
                 <div class="staff-member">
-                    
-                    <a href="<?php the_permalink(); ?>">
-                        <div class="staff-photo">
+
+                        <div class="staff-image-wrapper">
                             <?php 
                             if ( has_post_thumbnail() ) {
-                                the_post_thumbnail('large');
+                                the_post_thumbnail('small');
                             } else {
                                 echo '<img src="' . get_template_directory_uri() . '/assets/images/Portrait_Placeholder.png" alt="Staff placeholder">';
                             }
                             ?>
                         </div>
-                        <h2><?php the_title(); ?></h2>
-                    </a>
+                        <div class="staff-member-info">
+                        <p class="staff-name"><?php the_title(); ?></p>
+                   
 
                     <?php
                     $job_title = get_post_meta( get_the_ID(), '_staff_job_title', true );
@@ -60,7 +61,7 @@ get_header();
                     if ( $department ) : ?>
                         <p class="department-title"><?php echo esc_html( $department ); ?></p>
                     <?php endif; ?>
-                </div>
+                </div> </div> 
             <?php endwhile; ?>
         </div>
 
