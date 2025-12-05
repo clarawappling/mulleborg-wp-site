@@ -502,7 +502,8 @@ color: var(--forest);
 /* ------------------ STAFF ------------------ */
 
 .staff-archive, .single-staff {
-   
+   display: flex;
+   flex-direction: column;
 
 }
 
@@ -510,6 +511,7 @@ color: var(--forest);
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: var(--tipi);
 }
 
 .staff-member {

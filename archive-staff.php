@@ -2,7 +2,7 @@
 get_header(); 
 ?>
 
-<div class="staff-archive">
+
     <?php 
     $settings_page = get_page_by_path('staff-archive-settings');
     $hero_image = $settings_page ? get_field('staff_archive_hero_image', $settings_page->ID) : null;
@@ -18,10 +18,8 @@ get_header();
         </div>
     <?php endif; ?>
 </div>
-
-    <?php if ( have_posts() ) : ?>
-        <div class="staff-grid">
-            <?php if ($heading || $text_section) : ?> 
+<div class="staff-archive">
+         <?php if ($heading || $text_section) : ?> 
             <div class="info-box flex yellow-bg">
               <?php if ($heading) : ?>
             <h2><?php echo esc_html($heading); ?></h2>
@@ -32,6 +30,9 @@ get_header();
 
             </div>
             <?php endif; ?>
+    <?php if ( have_posts() ) : ?>
+        <div class="staff-grid">
+   
             <?php while ( have_posts() ) : the_post(); ?>
                 <div class="staff-member">
                     
