@@ -1,11 +1,37 @@
 <?php
-get_header(); ?>
+get_header(); 
+?>
 
 <div class="staff-archive">
-    <h1 class="no-margin"><?php post_type_archive_title(); ?></h1>
+    <?php 
+    $settings_page = get_page_by_path('staff-archive-settings');
+    $hero_image = $settings_page ? get_field('staff_archive_hero_image', $settings_page->ID) : null;
+    $heading = $settings_page ? get_field('staff_archive_heading', $settings_page->ID) : null;
+    $text_section = $settings_page ? get_field('staff_archive_text_section', $settings_page->ID) : null;
+
+    if ($hero_image) : ?>
+        <div class="image-wrapper">
+            <img 
+                src="<?php echo esc_url($hero_image['url']); ?>" 
+                alt="<?php echo esc_attr($hero_image['alt']); ?>"
+            >
+        </div>
+    <?php endif; ?>
+</div>
 
     <?php if ( have_posts() ) : ?>
         <div class="staff-grid">
+            <?php if ($heading || $text_section) : ?> 
+            <div class="info-box flex yellow-bg">
+              <?php if ($heading) : ?>
+            <h2><?php echo esc_html($heading); ?></h2>
+        <?php endif; ?>
+        <?php if ($text_section) : ?>
+            <div><?php echo esc_html($text_section); ?></div>
+        <?php endif; ?>
+
+            </div>
+            <?php endif; ?>
             <?php while ( have_posts() ) : the_post(); ?>
                 <div class="staff-member">
                     
