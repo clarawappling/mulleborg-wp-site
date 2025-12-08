@@ -21,6 +21,7 @@ Version: 1.o
 --terracottaHover: #df7051;
 --black: #333;
 --blue: #4377BB;
+--blueHover: #39649d;
 }
 
 /*---Brand coloring IUS----*/
@@ -197,11 +198,6 @@ a {
     color: var(--black);
     padding: 50px 20px;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
-
-}
-
-.site-footer a:hover {
-   color: var(--sage);
 }
 
 .footer-inner {
@@ -225,7 +221,10 @@ a {
     list-style:none;
     padding: 0;
     }
-   
+}
+
+.footer-nav a:hover {
+    color: var(--sage);
 }
 
 
@@ -329,7 +328,7 @@ a {
 .hero-btn {
     display: inline-block;
     padding: 1rem 2rem;
-    background: var(--terracotta);
+    background: var(--blue);
     color: #fff;
     text-decoration: none;
     font-size: 1.25rem;
@@ -340,7 +339,7 @@ a {
 }
 
 .hero-btn:hover {
-    background: var(--terracottaHover);
+    background: var(--blueHover);
 }
 /* Responsive adjustments */
 @media (min-width: 768px) {
