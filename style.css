@@ -425,6 +425,11 @@ color: var(--forest);
     color: var(--cream);
 }
 
+.blue-btn {
+    background-color: var(--blue);
+    color: var(--wood);
+}
+
 
 
 .image-wrapper {
