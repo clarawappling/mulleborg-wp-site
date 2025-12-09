@@ -46,7 +46,7 @@ $intro_text  = get_field('intro_text');
     <div class="section-divider divider-to-cream">
     <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-bottom.svg' ); ?>
 </div></div>
-<div class="sections-wrapper home-page">
+<div class="sections-wrapper home">
 
 <!-- Green Section -->
  

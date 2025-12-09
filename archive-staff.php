@@ -8,7 +8,7 @@ get_header();
     $hero_image = $settings_page ? get_field('staff_archive_hero_image', $settings_page->ID) : null;
     $heading = $settings_page ? get_field('staff_archive_heading', $settings_page->ID) : null;
     $text_section = $settings_page ? get_field('staff_archive_text_section', $settings_page->ID) : null; ?>
-    <div class="image-wrapper">
+    <div class="staff-hero-image-wrapper">
     <?php if ($hero_image) : ?>
             <img 
                 src="<?php echo esc_url($hero_image['url']); ?>" 
