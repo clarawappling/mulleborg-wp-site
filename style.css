@@ -669,6 +669,16 @@ font-weight: 400;
  }
  }
 
+ @media (min-width: 1300px) {
+        .outdoors-page .section-box .info-box div {
+    max-width: 90%;
+ }
+
+   .outdoors-page .section-box .image-wrapper img {
+    height: 600px;
+ }
+ }
+
 
  
 
