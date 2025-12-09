@@ -660,11 +660,8 @@ font-weight: 400;
 
 .home {
        
-    .image-wrapper img {
-  
-  max-width: 430px;
-
-
+.image-wrapper img {
+    max-width: 430px;
 }
     .section-box {
         max-width: 430px;
@@ -683,6 +680,12 @@ font-weight: 400;
 .image-wrapper img {
   border-radius: 40px 40px 0px 0px;
 }
+  .sections-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+  }
 }
 
 .desktop {
