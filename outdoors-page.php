@@ -2,8 +2,8 @@
 /* Template Name: Outdoors Page */
 get_header(); 
 ?>
-<div class="sections-wrapper">
-
+<div class="outdoors-page">
+<div class=section-box>
 <?php if ($outdoors_image = get_field('outdoors_image')) : ?>
     <div class="image-wrapper">
         <img src="<?php echo esc_url($outdoors_image['url']); ?>" alt="<?php echo esc_attr($outdoors_image['alt']); ?>">
@@ -25,7 +25,8 @@ if ($outdoors_heading || $outdoors_text_1) : ?>
         <?php endif; ?>
     </div>
 <?php endif; ?>
-
+</div>
+<div class=section-box>
 <?php if ($outdoors_image_2 = get_field('outdoors_image_2')) : ?>
     <div class="image-wrapper">
         <img src="<?php echo esc_url($outdoors_image_2['url']); ?>" alt="<?php echo esc_attr($outdoors_image_2['alt']); ?>">
@@ -58,8 +59,8 @@ if ($outdoors_text_2 || $outdoors_link_tip || $i_ur_link) : ?>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
-    </div>
+    </div> 
 <?php endif; ?>
 
-</div>
+</div></div>
 <?php get_footer(); ?>
