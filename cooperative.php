@@ -2,7 +2,7 @@
 /* Template Name: Cooperative Page */
 get_header(); 
 ?>
-<div class="sections-wrapper">
+<div class="sections-wrapper cooperative-page">
 <?php if ($cooperative_page_image = get_field('cooperative_page_image')) : ?>
         <div class="image-wrapper">
             <img src="<?php echo esc_url($cooperative_page_image['url']); ?>" alt="<?php echo esc_attr($cooperative_page_image['alt']); ?>">

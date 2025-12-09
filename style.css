@@ -736,7 +736,28 @@ font-weight: 400;
 /*--FIXES FOR DESKTOP, COOPERATIVE PAGE--*/
 
 @media (min-width: 768px) {
-    
+    .cooperative-page .info-box div {
+        max-width: 70%;
+    }
+
+       .cooperative-page .info-box div {
+        max-width: 100%;
+    }
+
+
+
+}
+
+@media (min-width: 1300px) {
+    .cooperative-page .info-box div {
+        max-width: 90%;
+    }
+
+        .cooperative-page .info-box {
+        padding-bottom: 2rem;
+    }
+
+   
 }
 
 /*----CONTACT PAGE-----*/
