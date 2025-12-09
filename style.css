@@ -622,7 +622,7 @@ font-weight: 400;
   }
   .sections-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
   
   }
