@@ -498,3 +498,4 @@ add_shortcode('kids_clothes_categories_icons', function() {
     return $output;
 });
 
+
