@@ -38,7 +38,6 @@ else {
 
 }
 
-echo $shoesRecommendation;
 
 // KROPPEN
 $bodyRecommendation = "";
@@ -132,5 +131,3 @@ if ($temp < 10) {
         }
     }
 }
-
-
