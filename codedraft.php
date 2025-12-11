@@ -90,4 +90,47 @@ else {
 }
 
 //Mössa och vantar
+$headwearRecommendation = "";
+$mittensRecommendation = "";
+
+if ($temp < 10) {
+    if ($precip >= 2) {
+        if ($temp >= 5) {
+            $mittensRecommendation = "Galonvantar.";
+            $headwearRecommendation = "Sydväst.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Fodrade galonvantar.";
+            $headwearRecommendation = "Fleecefodrad sydväst.";
+        } else {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull.";
+        }
+    } elseif ($precip >= 1) {
+        if ($temp >= 5) {
+            $mittensRecommendation = "Vantar som tål lite väta.";
+            $headwearRecommendation = "Sydväst eller vanlig mössa.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Varma vantar som tål lite väta.";
+            $headwearRecommendation = "Varm mössa.";
+        } else {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull.";
+        }
+    } else { // dry
+        if ($temp >= 5) {
+            $mittensRecommendation = "Fingervantar eller tunna vantar.";
+            $headwearRecommendation = "Mössa.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Fodrade vantar.";
+            $headwearRecommendation = "Varm mössa.";
+        } elseif ($temp >= -5) {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull eller liknande.";
+        } else {
+            $mittensRecommendation = "Innervantar i ull + varma vintervantar ovanpå.";
+            $headwearRecommendation = "Balaklava + varm mössa i ull.";
+        }
+    }
+}
+
 
