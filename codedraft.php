@@ -1,16 +1,17 @@
+<!-- SKOR -->
 <?php
 
-$shoes = "";
+$shoesRecommendation = "";
 
 // Rain / wet conditions (rubber boots logic)
 if ($precip > 1 && $temp >= 0) {
 
     if ($temp >= 7) {
-        $shoes = "Gummistövlar";
+        $shoesRecommendation = "Gummistövlar";
     } elseif ($temp >= 4) {
-        $shoes = "Gummistövlar. Fodrade eller med ullstrumpor i.";
+        $shoesRecommendation = "Gummistövlar. Fodrade eller med ullstrumpor i.";
     } else { // 0–3°C
-        $shoes = "Fodrade gummistövlar med ullstrumpor i.";
+        $shoesRecommendation = "Fodrade gummistövlar med ullstrumpor i.";
     }
 
 }
@@ -18,23 +19,75 @@ if ($precip > 1 && $temp >= 0) {
 else {
 
     if ($temp >= 23) {
-        $shoes = "Svala skor, gärna sandaler. Idag är vi nog barfota en del.";
+        $shoesRecommendation = "Svala skor, gärna sandaler. Idag är vi nog barfota en del.";
     } elseif ($temp >= 17) {
-        $shoes = "Gympaskor eller sandaler för tår som gärna vill spreta.";
+        $shoesRecommendation = "Gympaskor eller sandaler för tår som gärna vill spreta.";
     } elseif ($temp >= 10) {
-        $shoes = "Gympaskor.";
+        $shoesRecommendation = "Gympaskor.";
     } elseif ($temp >= 5) {
-        $shoes = "Kängor eller andra lite rejälare skor.";
+        $shoesRecommendation = "Kängor eller andra lite rejälare skor.";
     } elseif ($temp >= 3) {
-        $shoes = "Kängor eller vinterskor.";
+        $shoesRecommendation = "Kängor eller vinterskor.";
     } elseif ($temp >= 0) {
-        $shoes = "Kängor eller vinterskor. Gärna ullstrumpor.";
+        $shoesRecommendation = "Kängor eller vinterskor. Gärna ullstrumpor.";
     } elseif ($temp >= -5) {
-        $shoes = "Fodrade vinterskor och ullstrumpor.";
+        $shoesRecommendation = "Fodrade vinterskor och ullstrumpor.";
     } else { // Below -5
-        $shoes = "Fodrade vinterskor och dubbla ullstrumpor.";
+        $shoesRecommendation = "Fodrade vinterskor och dubbla ullstrumpor.";
     }
 
 }
 
-echo $shoes;
+echo $shoesRecommendation;
+
+// KROPPEN
+$bodyRecommendation = "";
+
+if ($precip <= 0) {
+    if ($temp >= 23) {
+        $bodyRecommendation = "Shorts och linne, eller liknande riktigt svala kläder.";
+    } elseif ($temp >= 20) {
+        $bodyRecommendation = "Shorts eller långbyxor, t-shirt eller linne.";
+    } elseif ($temp >= 17) {
+        $bodyRecommendation = "Långbyxor och kort- eller långärmad tröja.";
+    } elseif ($temp >= 14) {
+        $bodyRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja.";
+    } elseif ($temp >= 10) {
+        $bodyRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta. Tunn jacka.";
+    } elseif ($temp >= 5) {
+        $bodyRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja. Skaljacka och skalbyxor.";
+    } elseif ($temp >= 0) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja. Fodrad jacka. Skalbyxor eller fodrade.";
+    } elseif ($temp >= -5) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja, fodrad jacka och täckbyxor.";
+    } else {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja, fodrad jacka och täckbyxor.";
+    }
+}
+
+//Wet conditions
+
+else {
+        if ($temp >= 23) {
+        $bodyRecommendation = "Shorts och linne, eller liknande riktigt svala kläder. Tunn regnjacka.";
+    } elseif ($temp >= 20) {
+        $bodyRecommendation = "Shorts eller långbyxor, t-shirt eller linne. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 17) {
+        $bodyRecommendation = "Långbyxor och kort- eller långärmad tröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 14) {
+        $bodyRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 10) {
+        $bodyRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 5) {
+        $bodyRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 0) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja. Fodrat regnställ.";
+    } elseif ($temp >= -5) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja, fodrad jacka och täckbyxor. Gärna fordrat rengställ om det finns risk för slaskväder.";
+    } else {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja, fodrad jacka och täckbyxor.";
+    }
+}
+
+//Mössa och vantar
+
