@@ -218,61 +218,159 @@ add_shortcode('kids_clothes_categories_icons', function() {
 
     // 3️⃣ Hämta dagliga värden
     $max_temp = $data['daily']['temperature_2m_max'][$index];
-    $min_temp = $data['daily']['temperature_2m_min'][$index];
+    $temp = $data['daily']['temperature_2m_min'][$index];
     $precip   = $data['daily']['precipitation_sum'][$index];
     $wind_kmh = $data['daily']['windspeed_10m_max'][$index];
     $wind_m_s = round($wind_kmh / 3.6, 1);
-    $feels_like = $min_temp - ($wind_m_s * 1);
+    $feels_like = $temp - ($wind_m_s * 1);
 
     // 4️⃣ Klädkategorier med logik
 
-    // Fötter 👢
-    if ($max_temp < 5) {
-        $feet = $precip > 0 ? "Galonstövlar med fleece sockor" : "Vinterstövlar";
-    } elseif ($precip > 0) {
-        $feet = "Vattentåliga skor / Galonstövlar";
+//SKOR 
+
+$shoesRecommendation = "";
+
+// Rain / wet conditions (rubber boots logic)
+if ($precip > 1 && $temp >= 0) {
+
+    if ($temp >= 7) {
+        $shoesRecommendation = "Gummistövlar";
+    } elseif ($temp >= 4) {
+        $shoesRecommendation = "Gummistövlar. Fodrade eller med ullstrumpor i.";
+    } else { // 0–3°C
+        $shoesRecommendation = "Fodrade gummistövlar med ullstrumpor i.";
+    }
+
+}
+// Dry conditions (temperature logic)
+else {
+
+    if ($temp >= 23) {
+        $shoesRecommendation = "Svala skor, gärna sandaler. Idag är vi nog barfota en del.";
+    } elseif ($temp >= 17) {
+        $shoesRecommendation = "Gympaskor eller sandaler för tår som gärna vill spreta.";
+    } elseif ($temp >= 10) {
+        $shoesRecommendation = "Gympaskor.";
+    } elseif ($temp >= 5) {
+        $shoesRecommendation = "Kängor eller andra lite rejälare skor.";
+    } elseif ($temp >= 3) {
+        $shoesRecommendation = "Kängor eller vinterskor.";
+    } elseif ($temp >= 0) {
+        $shoesRecommendation = "Kängor eller vinterskor. Gärna ullstrumpor.";
+    } elseif ($temp >= -5) {
+        $shoesRecommendation = "Fodrade vinterskor och ullstrumpor.";
+    } else { // Below -5
+        $shoesRecommendation = "Fodrade vinterskor och dubbla ullstrumpor.";
+    }
+
+}
+
+
+// KROPPEN
+$bodyRecommendation = "";
+
+if ($precip <= 0) {
+    if ($temp >= 23) {
+        $bodyRecommendation = "Shorts och linne, eller liknande riktigt svala kläder.";
+    } elseif ($temp >= 20) {
+        $bodyRecommendation = "Shorts eller långbyxor, t-shirt eller linne.";
+    } elseif ($temp >= 17) {
+        $bodyRecommendation = "Långbyxor och kort- eller långärmad tröja.";
+    } elseif ($temp >= 14) {
+        $bodyRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja.";
+    } elseif ($temp >= 10) {
+        $bodyRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta. Tunn jacka.";
+    } elseif ($temp >= 5) {
+        $bodyRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja. Skaljacka och skalbyxor.";
+    } elseif ($temp >= 0) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja. Fodrad jacka. Skalbyxor eller fodrade.";
+    } elseif ($temp >= -5) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja, fodrad jacka och täckbyxor.";
     } else {
-        $feet = "Vanliga skor / sneakers";
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja, fodrad jacka och täckbyxor.";
     }
+}
 
-    // Kropp 🧥
-    $body = "";
-    if ($max_temp < 5) {
-        $body .= "Termolager + varm jacka";
-    } elseif ($max_temp < 12) {
-        $body .= "Fleece / mellanskikt";
+//Wet conditions
+
+else {
+        if ($temp >= 23) {
+        $bodyRecommendation = "Shorts och linne, eller liknande riktigt svala kläder. Tunn regnjacka.";
+    } elseif ($temp >= 20) {
+        $bodyRecommendation = "Shorts eller långbyxor, t-shirt eller linne. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 17) {
+        $bodyRecommendation = "Långbyxor och kort- eller långärmad tröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 14) {
+        $bodyRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 10) {
+        $bodyRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 5) {
+        $bodyRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja. Regnjacka och regnbyxor.";
+    } elseif ($temp >= 0) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja. Fodrat regnställ.";
+    } elseif ($temp >= -5) {
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja, fodrad jacka och täckbyxor. Gärna fordrat rengställ om det finns risk för slaskväder.";
     } else {
-        $body .= "Lätt tröja / t-shirt";
+        $bodyRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja, fodrad jacka och täckbyxor.";
     }
-    if ($precip > 0) $body .= " + Vattentät jacka";
-    if ($wind_m_s >= 5) $body .= " + Vindjacka";
+}
 
-    // Händer 🧤
-    $hands = "";
-    if ($min_temp < 5) $hands .= "Mössa + vantar";
-    if ($wind_m_s >= 5 && $min_temp < 10) $hands .= " / Vindvantar";
+//Mössa och vantar
+$headwearRecommendation = "";
+$mittensRecommendation = "";
 
-    // Huvud 🎩
-    $head = "";
-    if ($min_temp < 5) {
-        $head .= "Mössa";
-    } elseif ($wind_m_s >= 5) {
-        $head .= "Lätt huvudskydd / huva";
+if ($temp < 10) {
+    if ($precip >= 2) {
+        if ($temp >= 5) {
+            $mittensRecommendation = "Galonvantar.";
+            $headwearRecommendation = "Sydväst.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Fodrade galonvantar.";
+            $headwearRecommendation = "Fleecefodrad sydväst.";
+        } else {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull.";
+        }
+    } elseif ($precip >= 1) {
+        if ($temp >= 5) {
+            $mittensRecommendation = "Vantar som tål lite väta.";
+            $headwearRecommendation = "Sydväst eller vanlig mössa.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Varma vantar som tål lite väta.";
+            $headwearRecommendation = "Varm mössa.";
+        } else {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull.";
+        }
+    } else { // dry
+        if ($temp >= 5) {
+            $mittensRecommendation = "Fingervantar eller tunna vantar.";
+            $headwearRecommendation = "Mössa.";
+        } elseif ($temp >= 0) {
+            $mittensRecommendation = "Fodrade vantar.";
+            $headwearRecommendation = "Varm mössa.";
+        } elseif ($temp >= -5) {
+            $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
+            $headwearRecommendation = "Varm mössa, gärna i ull eller liknande.";
+        } else {
+            $mittensRecommendation = "Innervantar i ull + varma vintervantar ovanpå.";
+            $headwearRecommendation = "Balaklava + varm mössa i ull.";
+        }
     }
+}
 
     // 5️⃣ Bygg HTML-output med ikoner
     $output  = "<div class='kids-clothes-box'>";
     $output .= "<p><strong>Klädrekommendationer för {$day} (baserat på kategori):</strong></p>";
-    $output .= "<p>Max temp: {$max_temp}°C<br>";
-    $output .= "Min temp: {$min_temp}°C<br>";
+    $output .= "Min temp: {$temp}°C<br>";
     $output .= "Nederbörd: {$precip} mm<br>";
     $output .= "Vind: {$wind_m_s} m/s</p>";
 
     $output .= "<ul>";
-    $output .= "<li>👢 <strong>Fötter:</strong> " . esc_html($feet) . "</li>";
-    $output .= "<li>🧥 <strong>Kropp:</strong> " . esc_html($body) . "</li>";
-    $output .= "<li>🧤 <strong>Händer:</strong> " . esc_html($hands) . "</li>";
-    $output .= "<li>🎩 <strong>Huvud:</strong> " . esc_html($head) . "</li>";
+    $output .= "<li>👢 <strong>Fötter:</strong> " . esc_html($shoesRecommendation) . "</li>";
+    $output .= "<li>🧥 <strong>Kropp:</strong> " . esc_html($bodyRecommendation) . "</li>";
+    $output .= "<li>🧤 <strong>Händer:</strong> " . esc_html($mittensRecommendation) . "</li>";
+    $output .= "<li>🎩 <strong>Huvud:</strong> " . esc_html($headwearRecommendation) . "</li>";
     $output .= "</ul>";
     $output .= "</div>";
 
