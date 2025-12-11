@@ -492,7 +492,7 @@ if ($temp <= 10 && $max_wind_kmh >= 5) {
     $feels_like = $temp;
 }
 
-    // 4️⃣ Klädkategorier med logik
+// 4️⃣ Klädkategorier med logik
 
 //SKOR 
 
@@ -642,6 +642,8 @@ if ($temp < 10) {
             $headwearRecommendation = "Balaklava + varm mössa i ull.";
         }
     }
+} elseif ($clear_sky && $temp >= 18) {
+    $headwearRecommendation = "En keps på huvudet eller solkräm.";
 }
 
     // 5️⃣ Bygg HTML-output med ikoner
