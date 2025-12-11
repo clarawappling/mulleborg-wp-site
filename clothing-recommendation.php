@@ -3,7 +3,5 @@
 get_header(); 
 ?>
 <?php echo do_shortcode('[test_weather]'); ?>
-<?php echo do_shortcode('[kids_clothes]'); ?>
-<?php echo do_shortcode('[kids_clothes_ai]'); ?>
 <?php echo do_shortcode('[kids_clothes_categories_icons]'); ?>
 <?php get_footer(); ?>
