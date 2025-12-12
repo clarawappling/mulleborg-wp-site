@@ -22,16 +22,25 @@ Version: 1.o
 --black: #333;
 --blue: #4377BB;
 --blueHover: #39649d;
+--darkBlue: #081b49;
 }
 
 /*---Brand coloring IUS----*/
 .ius_brand-color-text {
    color:var(--blue);
 }
-
+.ius_dark_brand-color-text {
+   color:var(--darkBlue);
+}
 .ius_brand-color-background {
    background-color: var(--blue);
 }
+
+.ius_dark_brand-color-background {
+   background-color: var(--darkBlue);
+}
+
+
 
 /*--------------------*/
 
@@ -804,8 +813,89 @@ font-weight: 400;
     padding-bottom: 4rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    h1 {
-        color: var(--forest);
-        margin-left: 1rem;
-        margin-right: 1rem;
-}}
+}
+
+.contact-wrapper h1 {
+    color: var(--forest);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+
+/*----WEATHER MODAL-----*/
+/* OVERLAY */
+.kids-fullscreen-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: none;
+    justify-content: center;
+    align-items: flex-end; /* slide up from bottom */
+    z-index: 999999;
+    padding: 0;
+}
+
+/* SHEET (modal body) */
+.kids-sheet {
+    background: var(--cream);
+    width: 100%;
+    max-width: 500px;  /* keeps it beautiful on desktop */
+    max-height: 90vh;
+    border-radius: 22px 22px 0 0;
+    padding: 28px 22px 40px;
+    box-shadow: 0 -6px 30px rgba(0,0,0,0.2);
+    transform: translateY(100%);
+    animation: kidsSlideUp 0.33s ease-out forwards;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* SLIDE ANIMATION */
+@keyframes kidsSlideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/* CLOSE BUTTON */
+.kids-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* CONTENT AREA */
+.kids-sheet-content {
+    margin-top: 30px;
+}
+
+/* STICKY OPEN BUTTON */
+.kids-sticky-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: var(--cream);
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 15px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 9999;
+    font-family: 'Outfit';
+}
+
+@keyframes kidsSlideDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+}
+
+.weather-conditions-box {
+    margin-top: 1rem;
+    background: #ffeed5;
+    padding: 2rem;
+    border-radius: 22px;
+}
+

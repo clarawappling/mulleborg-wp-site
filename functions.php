@@ -649,14 +649,7 @@ if ($temp < 10) {
     // 5️⃣ Bygg HTML-output med ikoner
     $output  = "<div class='kids-clothes-box flex'>";
     $output .= "<h2><strong>Bästa kläderna att ha på sig på Mulleborg {$day}</strong></h2>";
-    $output .= "<div class='flex'>";
-    $output .= "Medeltemperatur {$day}: " . round($temp, 1) . "°C<br>";
-    $output .= "Känns som:" . round($feels_like, 1) . "°C<br>";
-    $output .= "Nederbörd: {$precip} mm<br>";
-    $output .= "Vind: " . round($wind_m_s, 1) . " m/s</p>";
-    $output .= "</div>";
-
-    $output .= "<ul>";
+    $output .= "<ul style='text-align: left'>";
     $output .= "<li>👟 <strong>På fötterna:</strong> " . esc_html($shoesRecommendation) . "</li>";
     $output .= "<li>👕👖 <strong>Kläder:</strong> " . esc_html($innerWearRecommendation) . "</li>";
     if (!empty($outerWearRecommendation)) {
@@ -669,6 +662,14 @@ if ($temp < 10) {
     $output .= "<li>🧢 <strong>På huvudet:</strong> " . esc_html($headwearRecommendation) . "</li>";
     }
     $output .= "</ul>";
+    $output .= "<div class='flex weather-conditions-box'>";
+    $output .= "Medeltemperatur {$day}: " . round($temp, 1) . "°C<br>";
+    $output .= "Känns som:" . round($feels_like, 1) . "°C<br>";
+    $output .= "Nederbörd: {$precip} mm<br>";
+    $output .= "Vind: " . round($wind_m_s, 1) . " m/s</p>";
+    $output .= "</div>";
+
+
     $output .= "</div>";
 
     return $output;
