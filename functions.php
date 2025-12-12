@@ -36,9 +36,15 @@ add_theme_support('post-thumbnails', ['post', 'page', 'staff']);
 
 function mulleborg_enqueue_assets() {
     wp_enqueue_style( 'mulleborg-style', get_stylesheet_uri() );
-    wp_enqueue_script( 'mulleborg-script', get_template_directory_uri() . '/assets/js/main.js', array(), null, true );
+    wp_enqueue_script( 'mulleborg-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), null, true );
+
+    // Pass AJAX URL to JS
+    wp_localize_script( 'mulleborg-script', 'mulleborg_ajax', array(
+        'ajax_url' => admin_url( 'admin-ajax.php' )
+    ));
 }
 add_action( 'wp_enqueue_scripts', 'mulleborg_enqueue_assets', 100 );
+
 
 function mulleborg_enqueue_dashicons() {
     wp_enqueue_style( 'dashicons' );
@@ -146,267 +152,9 @@ function mulleborg_staff_title_placeholder( $title, $post ) {
 }
 add_filter( 'enter_title_here', 'mulleborg_staff_title_placeholder', 10, 2 );
 
-// --------------------
-// API Integration for weather data
-// --------------------
-
-// [test_weather] — basic Open-Meteo call
-// add_shortcode('test_weather', function() {
-
-//     // Example location — replace with your preschool's coords
-//     $lat = 59.354625932401774;
-//     $lon = 18.167468192093725;
-
-//     // Simple Open-Meteo forecast API call
-//     $url = add_query_arg(array(
-//         'latitude' => $lat,
-//         'longitude' => $lon,
-//         'current_weather' => 'true'
-//     ), 'https://api.open-meteo.com/v1/forecast');
-
-//     $response = wp_remote_get($url, array('timeout'=>10));
-
-//     if (is_wp_error($response)) {
-//         return '<p>Weather error: could not connect.</p>';
-//     }
-
-//     $body = wp_remote_retrieve_body($response);
-//     $data = json_decode($body, true);
-
-//     if (empty($data) || !isset($data['current_weather']['temperature'])) {
-//         return '<p>Weather error: data missing.</p>';
-//     }
-
-//     $temp = $data['current_weather']['temperature'];
-    
-
-//     // SUPER basic output
-//     return "<p>Current temperature: <strong>{$temp}°C</strong></p>";
-// });
-
-
-
-// add_shortcode('kids_clothes_categories_icons', function() {
-
-//     // 1️⃣ Bestäm idag/imorgon
-//     $current_hour = (int) current_time('H');
-//     if ($current_hour >= 17) {
-//         $day = 'imorgon';
-//         $index = 1;
-//     } else {
-//         $day = 'idag';
-//         $index = 0;
-//     }
-
-//     // 2️⃣ Hämta Open-Meteo daglig prognos
-//     $lat = 59.354625932401774;
-//     $lon = 18.167468192093725;
-
-//     $url = add_query_arg(array(
-//         'latitude' => $lat,
-//         'longitude' => $lon,
-//         'daily' => 'temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max',
-//         'timezone' => 'auto'
-//     ), 'https://api.open-meteo.com/v1/forecast');
-
-//     $response = wp_remote_get($url, array('timeout' => 10));
-//     if (is_wp_error($response)) return "<p>Väderfel: kunde inte ansluta.</p>";
-
-//     $body = wp_remote_retrieve_body($response);
-//     $data = json_decode($body, true);
-//     if (empty($data['daily'])) return "<p>Väderfel: prognos saknas.</p>";
-
-//     // 3️⃣ Hämta dagliga värden
-//     $max_temp = $data['daily']['temperature_2m_max'][$index];
-//     $temp = $data['daily']['temperature_2m_min'][$index];
-//     $precip   = $data['daily']['precipitation_sum'][$index];
-//     $wind_kmh = $data['daily']['windspeed_10m_max'][$index];
-//     $wind_m_s = round($wind_kmh / 3.6, 1);
-//     $feels_like = $temp - ($wind_m_s * 1);
-
-//     // 4️⃣ Klädkategorier med logik
-// //TESTDATA
-// $temp = 9;
-// $precip = 10;
-// //SKOR 
-
-// $shoesRecommendation = "";
-
-// // Rain / wet conditions (rubber boots logic)
-// if ($precip > 1 && $temp >= 0) {
-
-//     if ($temp >= 7) {
-//         $shoesRecommendation = "Gummistövlar";
-//     } elseif ($temp >= 4) {
-//         $shoesRecommendation = "Gummistövlar. Fodrade eller med ullstrumpor i.";
-//     } else { // 0–3°C
-//         $shoesRecommendation = "Fodrade gummistövlar med ullstrumpor i.";
-//     }
-
-// }
-// // Dry conditions (temperature logic)
-// else {
-
-//     if ($temp >= 23) {
-//         $shoesRecommendation = "Svala skor, gärna sandaler. Idag är vi nog barfota en del.";
-//     } elseif ($temp >= 17) {
-//         $shoesRecommendation = "Gympaskor eller sandaler för tår som gärna vill spreta.";
-//     } elseif ($temp >= 10) {
-//         $shoesRecommendation = "Gympaskor.";
-//     } elseif ($temp >= 5) {
-//         $shoesRecommendation = "Kängor eller andra lite rejälare skor.";
-//     } elseif ($temp >= 3) {
-//         $shoesRecommendation = "Kängor eller vinterskor.";
-//     } elseif ($temp >= 0) {
-//         $shoesRecommendation = "Kängor eller vinterskor. Gärna ullstrumpor.";
-//     } elseif ($temp >= -5) {
-//         $shoesRecommendation = "Fodrade vinterskor och ullstrumpor.";
-//     } else { // Below -5
-//         $shoesRecommendation = "Fodrade vinterskor och dubbla ullstrumpor.";
-//     }
-
-// }
-
-
-// // KROPPEN
-// $innerWearRecommendation = "";
-// $outerWearRecommendation = "";
-
-// if ($precip <= 0) { // Dry conditions
-//     if ($temp >= 23) {
-//         $innerWearRecommendation = "Shorts och linne, eller liknande riktigt svala kläder.";
-//         $outerWearRecommendation = "";
-//     } elseif ($temp >= 20) {
-//         $innerWearRecommendation = "Shorts eller långbyxor, t-shirt eller linne.";
-//         $outerWearRecommendation = "";
-//     } elseif ($temp >= 17) {
-//         $innerWearRecommendation = "Långbyxor och kort- eller långärmad tröja.";
-//         $outerWearRecommendation = "";
-//     } elseif ($temp >= 14) {
-//         $innerWearRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja.";
-//         $outerWearRecommendation = "";
-//     } elseif ($temp >= 10) {
-//         $innerWearRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta.";
-//         $outerWearRecommendation = "Tunn jacka";
-//     } elseif ($temp >= 5) {
-//         $innerWearRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja.";
-//         $outerWearRecommendation = "Skaljacka och skalbyxor";
-//     } elseif ($temp >= 0) {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja.";
-//         $outerWearRecommendation = "Fodrad jacka. Skalbyxor eller fodrade.";
-//     } elseif ($temp >= -5) {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja.";
-//         $outerWearRecommendation = "Fodrad jacka och täckbyxor";
-//     } else {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja.";
-//         $outerWearRecommendation = "Fodrad jacka och täckbyxor";
-//     }
-// } 
-// else { // Wet conditions
-//     if ($temp >= 23) {
-//         $innerWearRecommendation = "Shorts och linne, eller liknande riktigt svala kläder.";
-//         $outerWearRecommendation = "Tunn regnjacka";
-//     } elseif ($temp >= 20) {
-//         $innerWearRecommendation = "Shorts eller långbyxor, t-shirt eller linne.";
-//         $outerWearRecommendation = "Regnjacka och regnbyxor";
-//     } elseif ($temp >= 17) {
-//         $innerWearRecommendation = "Långbyxor och kort- eller långärmad tröja.";
-//         $outerWearRecommendation = "Regnjacka och regnbyxor";
-//     } elseif ($temp >= 14) {
-//         $innerWearRecommendation = "Långbyxor. T-shirt och skjorta eller collegetröja.";
-//         $outerWearRecommendation = "Regnjacka och regnbyxor";
-//     } elseif ($temp >= 10) {
-//         $innerWearRecommendation = "Långbyxor. T-shirt och collegetröja eller skjorta.";
-//         $outerWearRecommendation = "Regnjacka och regnbyxor";
-//     } elseif ($temp >= 5) {
-//         $innerWearRecommendation = "Långbyxor eller underställsbyxor. Lager på lager på överkroppen, t.ex. underställströja och skjorta eller collegetröja.";
-//         $outerWearRecommendation = "Regnjacka och regnbyxor";
-//     } elseif ($temp >= 0) {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Skjorta eller collegetröja.";
-//         $outerWearRecommendation = "Fodrat regnställ";
-//     } elseif ($temp >= -5) {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en varm tröja.";
-//         $outerWearRecommendation = "Fodrad jacka och täckbyxor. Gärna fodrat regnställ om risk för slaskväder";
-//     } else {
-//         $innerWearRecommendation = "Ullunderställ på under- och överkropp. Mellanlager, skjorta eller t-shirt. Därefter en ulltröja.";
-//         $outerWearRecommendation = "Fodrad jacka och täckbyxor";
-//     }
-// }
-
-
-// //Mössa och vantar
-// $headwearRecommendation = "";
-// $mittensRecommendation = "";
-
-// if ($temp < 10) {
-//     if ($precip >= 2) {
-//         if ($temp >= 5) {
-//             $mittensRecommendation = "Galonvantar.";
-//             $headwearRecommendation = "Sydväst.";
-//         } elseif ($temp >= 0) {
-//             $mittensRecommendation = "Fodrade galonvantar.";
-//             $headwearRecommendation = "Fleecefodrad sydväst.";
-//         } else {
-//             $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
-//             $headwearRecommendation = "Varm mössa, gärna i ull.";
-//         }
-//     } elseif ($precip >= 1) {
-//         if ($temp >= 5) {
-//             $mittensRecommendation = "Vantar som tål lite väta.";
-//             $headwearRecommendation = "Sydväst eller vanlig mössa.";
-//         } elseif ($temp >= 0) {
-//             $mittensRecommendation = "Varma vantar som tål lite väta.";
-//             $headwearRecommendation = "Varm mössa.";
-//         } else {
-//             $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
-//             $headwearRecommendation = "Varm mössa, gärna i ull.";
-//         }
-//     } else { // dry
-//         if ($temp >= 5) {
-//             $mittensRecommendation = "Fingervantar eller tunna vantar.";
-//             $headwearRecommendation = "Mössa.";
-//         } elseif ($temp >= 0) {
-//             $mittensRecommendation = "Fodrade vantar.";
-//             $headwearRecommendation = "Varm mössa.";
-//         } elseif ($temp >= -5) {
-//             $mittensRecommendation = "Varma vintervantar, gärna ullfodrade.";
-//             $headwearRecommendation = "Varm mössa, gärna i ull eller liknande.";
-//         } else {
-//             $mittensRecommendation = "Innervantar i ull + varma vintervantar ovanpå.";
-//             $headwearRecommendation = "Balaklava + varm mössa i ull.";
-//         }
-//     }
-// }
-
-//     // 5️⃣ Bygg HTML-output med ikoner
-//     $output  = "<div class='kids-clothes-box'>";
-//     $output .= "<p><strong>Klädrekommendationer för {$day} (baserat på kategori):</strong></p>";
-//     $output .= "Min temp: {$temp}°C<br>";
-//     $output .= "Nederbörd: {$precip} mm<br>";
-//     $output .= "Vind: {$wind_m_s} m/s</p>";
-
-//     $output .= "<ul>";
-//     $output .= "<li>👟 <strong>På fötterna:</strong> " . esc_html($shoesRecommendation) . "</li>";
-//     $output .= "<li>👕👖 <strong>Innerkläder:</strong> " . esc_html($innerWearRecommendation) . "</li>";
-//     if (!empty($outerWearRecommendation)) {
-//         $output .= "<li>🧥 <strong>Ytterkläder:</strong> " . esc_html($outerWearRecommendation) . "</li>";
-//     }
-//     if (!empty($mittensRecommendation)) {
-//         $output .= "<li>🧤 <strong>På händerna:</strong> " . esc_html($mittensRecommendation) . "</li>";
-//     }
-//     if (!empty($headwearRecommendation)) {
-//     $output .= "<li>🧢 <strong>På huvudet:</strong> " . esc_html($headwearRecommendation) . "</li>";
-//     }
-//     $output .= "</ul>";
-//     $output .= "</div>";
-
-//     return $output;
-// });
-
-
 add_shortcode('kids_clothes_temp_for_windchill', function() {
 
-   // 1️⃣ Bestäm idag/imorgon
+   //  Bestäm idag/imorgon
 $current_hour = (int) current_time('H');
 if ($current_hour >= 17) {
     $day = 'imorgon';
@@ -416,7 +164,7 @@ if ($current_hour >= 17) {
     $index = 0;
 }
 
-// 2️⃣ Hämta Open-Meteo prognos (TIMVIS)
+//  Hämta Open-Meteo prognos (TIMVIS)
 $lat = 59.354625932401774;
 $lon = 18.167468192093725;
 
@@ -434,17 +182,17 @@ $body = wp_remote_retrieve_body($response);
 $data = json_decode($body, true);
 if (empty($data['hourly'])) return "<p>Väderfel: prognos saknas.</p>";
 
-// 3️⃣ Skapa en array med timvis data
+// Skapa en array med timvis data
 $times  = $data['hourly']['time'];
 $temps  = $data['hourly']['temperature_2m'];
 $prec   = $data['hourly']['precipitation'];
 $wcodes = $data['hourly']['weathercode'];
 $winds  = $data['hourly']['windspeed_10m'];
 
-// 4️⃣ Identifiera vilka timmar som hör till idag eller imorgon
+// 4Identifiera vilka timmar som hör till idag eller imorgon
 $target_date = date('Y-m-d', strtotime("+$index day"));
 
-// 5️⃣ Filtrera fram enbart timmar mellan 07–17
+// Filtrera fram enbart timmar mellan 07–17
 $daytime_data = array();
 for ($i = 0; $i < count($times); $i++) {
     $t = strtotime($times[$i]);
@@ -464,9 +212,9 @@ if ($hour >= 7 && $hour <= 17) {
 
 }
 
-// 6️⃣ Sammanställ prognos för dagtid
+//  Sammanställ prognos för dagtid
 if (empty($daytime_data)) {
-    return "<p>Inga dagtidsdata hittades.</p>";
+    return "<p>Oops, ingen väderdata hittades.</p>";
 }
 
 $temp = array_sum(array_column($daytime_data, 'temp')) / count($daytime_data);
@@ -492,7 +240,7 @@ if ($temp <= 10 && $max_wind_kmh >= 5) {
     $feels_like = $temp;
 }
 
-// 4️⃣ Klädkategorier med logik
+// CLOTHING RECOMMENDATIONS
 
 //SKOR 
 
@@ -646,7 +394,7 @@ if ($temp < 10) {
     $headwearRecommendation = "En keps på huvudet eller solkräm.";
 }
 
-    // 5️⃣ Bygg HTML-output med ikoner
+    // HTML-output med ikoner
     $output  = "<div class='kids-clothes-box flex'>";
     $output .= "<h2><strong>Bästa kläderna att ha på sig på Mulleborg {$day}</strong></h2>";
     $output .= "<ul style='text-align: left'>";
@@ -675,3 +423,27 @@ if ($temp < 10) {
     return $output;
 });
 
+// AJAX handler for kids clothes modal
+function mulleborg_ajax_kids_clothes() {
+    // Caching
+    $cache_key = 'kids_clothes_forecast';
+    $cached = get_transient( $cache_key );
+
+    if ( $cached ) {
+        echo $cached;
+        wp_die();
+    }
+
+    // Run existing shortcode logic but without returning it immediately
+    ob_start();
+    echo do_shortcode('[kids_clothes_temp_for_windchill]');
+    $output = ob_get_clean();
+
+    // Cache for 15 minutes (900 seconds)
+    set_transient( $cache_key, $output, 900 );
+
+    echo $output;
+    wp_die(); 
+}
+add_action( 'wp_ajax_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
+add_action( 'wp_ajax_nopriv_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );

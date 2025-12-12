@@ -18,12 +18,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const sheet = document.querySelector('.kids-sheet');
     const openBtn = document.getElementById('openKidsModal');
     const closeBtn = document.querySelector('.kids-close');
+    const contentDiv = document.querySelector('.kids-sheet-content');
 
     // open
     openBtn.addEventListener('click', () => {
         modal.style.display = 'flex';
         sheet.style.animation = "kidsSlideUp 0.33s ease-out forwards";
-        document.body.style.overflow = "hidden"; // disable scrolling behind modal
+        document.body.style.overflow = "hidden";
+
+        // If content not loaded yet, fetch via AJAX
+        if (!contentDiv.dataset.loaded) {
+            contentDiv.innerHTML = "⏳ Laddar väder och klädråd...";
+            fetch(`${mulleborg_ajax.ajax_url}?action=get_kids_clothes`)
+                .then(res => res.text())
+                .then(html => {
+                    contentDiv.innerHTML = html;
+                    contentDiv.dataset.loaded = true; // prevent reloading
+                })
+                .catch(err => {
+                    contentDiv.innerHTML = "<p>Väderfel: kunde inte hämta data.</p>";
+                    console.error(err);
+                });
+        }
     });
 
     // close
@@ -45,4 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+
 

@@ -824,7 +824,7 @@ font-weight: 400;
 
 
 /*----WEATHER MODAL-----*/
-/* OVERLAY */
+/* overlay */
 .kids-fullscreen-overlay {
     position: fixed;
     inset: 0;
@@ -836,7 +836,7 @@ font-weight: 400;
     padding: 0;
 }
 
-/* SHEET (modal body) */
+/* Sheet (modal body) */
 .kids-sheet {
     background: var(--cream);
     width: 100%;
@@ -851,13 +851,13 @@ font-weight: 400;
     position: relative;
 }
 
-/* SLIDE ANIMATION */
+/* Slide animation*/
 @keyframes kidsSlideUp {
     from { transform: translateY(100%); }
     to { transform: translateY(0); }
 }
 
-/* CLOSE BUTTON */
+/* Close button */
 .kids-close {
     position: absolute;
     top: 12px;
@@ -866,12 +866,12 @@ font-weight: 400;
     cursor: pointer;
 }
 
-/* CONTENT AREA */
+/* Content Area*/
 .kids-sheet-content {
     margin-top: 30px;
 }
 
-/* STICKY OPEN BUTTON */
+/* Sticky open-button */
 .kids-sticky-btn {
     position: fixed;
     bottom: 20px;
@@ -892,6 +892,7 @@ font-weight: 400;
     to { transform: translateY(100%); }
 }
 
+/*Weather data in modal*/
 .weather-conditions-box {
     margin-top: 1rem;
     background: #ffeed5;
