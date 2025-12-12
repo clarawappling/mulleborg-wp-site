@@ -396,7 +396,7 @@ if ($temp < 10) {
 
     // HTML-output med ikoner
     $output  = "<div class='kids-clothes-box flex'>";
-    $output .= "<h2><strong>Bästa kläderna att ha på sig på Mulleborg {$day}</strong></h2>";
+    $output .= "<h2><strong>Vad ska mitt barn ha på sig på Mulleborg {$day}?</strong></h2>";
     $output .= "<ul style='text-align: left'>";
     $output .= "<li>👟 <strong>På fötterna:</strong> " . esc_html($shoesRecommendation) . "</li>";
     $output .= "<li>👕👖 <strong>Kläder:</strong> " . esc_html($innerWearRecommendation) . "</li>";
@@ -424,26 +424,55 @@ if ($temp < 10) {
 });
 
 // AJAX handler for kids clothes modal
-function mulleborg_ajax_kids_clothes() {
-    // Caching
-    $cache_key = 'kids_clothes_forecast';
-    $cached = get_transient( $cache_key );
+//PUT BACK WHEN TESTING FINISHED
+// function mulleborg_ajax_kids_clothes() {
+//     // Caching
+//     $cache_key = 'kids_clothes_forecast';
+//     $cached = get_transient( $cache_key );
 
-    if ( $cached ) {
-        echo $cached;
-        wp_die();
+//     if ( $cached ) {
+//         echo $cached;
+//         wp_die();
+//     }
+
+//     // Run existing shortcode logic but without returning it immediately
+//     ob_start();
+//     echo do_shortcode('[kids_clothes_temp_for_windchill]');
+//     $output = ob_get_clean();
+
+//     // Cache for 15 minutes (900 seconds)
+//     set_transient( $cache_key, $output, 900 ); 
+
+//     echo $output;
+//     wp_die(); 
+// }
+function mulleborg_ajax_kids_clothes() {
+    // Disable caching during development/testing
+    $use_cache = false; // set to false to skip cache
+
+    if ($use_cache) {
+        $cache_key = 'kids_clothes_forecast';
+        $cached = get_transient( $cache_key );
+
+        if ( $cached ) {
+            echo $cached;
+            wp_die();
+        }
     }
 
-    // Run existing shortcode logic but without returning it immediately
+    // Run existing shortcode logic
     ob_start();
     echo do_shortcode('[kids_clothes_temp_for_windchill]');
     $output = ob_get_clean();
 
-    // Cache for 15 minutes (900 seconds)
-    set_transient( $cache_key, $output, 900 );
+    if ($use_cache) {
+        // Cache for 15 minutes (900 seconds)
+        set_transient( $cache_key, $output, 900 );
+    }
 
     echo $output;
     wp_die(); 
 }
+
 add_action( 'wp_ajax_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
 add_action( 'wp_ajax_nopriv_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
