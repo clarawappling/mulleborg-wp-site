@@ -14,11 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // ---- WEATHER MODAL LOGIC ----
     const modal = document.getElementById('kidsModal');
     const sheet = document.querySelector('.kids-sheet');
     const openBtn = document.getElementById('openKidsModal');
     const closeBtn = document.querySelector('.kids-close');
     const contentDiv = document.querySelector('.kids-sheet-content');
+
+    // Only run if the elements exist and AJAX object is defined
+    if (!openBtn || !sheet || !modal || !closeBtn || !contentDiv || typeof mulleborg_ajax === 'undefined') {
+        return; // exit early if weather button is disabled
+    }
 
     // open
     openBtn.addEventListener('click', () => {

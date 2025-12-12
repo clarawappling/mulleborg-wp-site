@@ -830,7 +830,7 @@ font-weight: 400;
     inset: 0;
     background: rgba(0,0,0,0.55);
     display: none;
-    justify-content: center;
+    justify-content: center;;
     align-items: flex-end; /* slide up from bottom */
     z-index: 999999;
     padding: 0;
@@ -861,7 +861,7 @@ font-weight: 400;
 .kids-close {
     position: absolute;
     top: 12px;
-    right: 18px;
+    left: 18px;
     font-size: 24px;
     cursor: pointer;
 }
@@ -898,5 +898,15 @@ font-weight: 400;
     background: #ffeed5;
     padding: 2rem;
     border-radius: 22px;
+}
+
+@media (min-width: 768px) {
+    .kids-fullscreen-overlay {
+        justify-content: flex-end;;
+}
+    .kids-sheet {
+        margin-right: 1rem;
+    }
+    
 }
 

@@ -69,18 +69,20 @@
 
     </div>
 </footer>
+
+<?php if ( get_theme_mod('kids_weather_enabled', true) ) : ?>
 <div id="kidsModal" class="kids-fullscreen-overlay">
     <div class="kids-sheet">
         <span class="kids-close">✕</span>
-        <div class="kids-sheet-content">
-            <?php echo do_shortcode('[kids_clothes_temp_for_windchill]'); ?>
-        </div>
+        <div class="kids-sheet-content"></div>
     </div>
 </div>
 
 <button id="openKidsModal" class="kids-sticky-btn ius_dark_brand-color-background">
-   Vad ska mitt barn ha på sig?
+    Vad ska mitt barn ha på sig <?php echo mulleborg_get_day_label(); ?>?
 </button>
+<?php endif; ?>
+
 
 <?php wp_footer(); ?>
 
