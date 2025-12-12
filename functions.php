@@ -34,14 +34,18 @@ add_theme_support('post-thumbnails', ['post', 'page', 'staff']);
 // Enqueue Styles & Scripts
 // --------------------
 
+
 function mulleborg_enqueue_assets() {
+    // Always enqueue main site JS & CSS
     wp_enqueue_style( 'mulleborg-style', get_stylesheet_uri() );
     wp_enqueue_script( 'mulleborg-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), null, true );
 
-    // Pass AJAX URL to JS
-    wp_localize_script( 'mulleborg-script', 'mulleborg_ajax', array(
-        'ajax_url' => admin_url( 'admin-ajax.php' )
-    ));
+    // Only pass AJAX URL if the kids-weather button is enabled
+    if ( get_option('mulleborg_kids_weather_enabled', 1) ) {
+        wp_localize_script( 'mulleborg-script', 'mulleborg_ajax', array(
+            'ajax_url' => admin_url( 'admin-ajax.php' )
+        ));
+    }
 }
 add_action( 'wp_enqueue_scripts', 'mulleborg_enqueue_assets', 100 );
 
@@ -448,7 +452,7 @@ if ($temp < 10) {
 // }
 function mulleborg_ajax_kids_clothes() {
     // Disable caching during development/testing
-    $use_cache = false; // set to false to skip cache
+    $use_cache = true; // set to false to skip cache
 
     if ($use_cache) {
         $cache_key = 'kids_clothes_forecast';
@@ -476,3 +480,36 @@ function mulleborg_ajax_kids_clothes() {
 
 add_action( 'wp_ajax_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
 add_action( 'wp_ajax_nopriv_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
+
+// Customizer section to toggle the kids weather button on and off
+function mulleborg_customize_register( $wp_customize ) {
+
+    $wp_customize->add_section( 'kids_weather_section', array(
+        'title'    => __('Kids Weather Button', 'mulleborg'),
+        'priority' => 160,
+    ));
+
+    $wp_customize->add_setting( 'kids_weather_enabled', array(
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+
+    $wp_customize->add_control( 'kids_weather_enabled', array(
+        'label'    => __('Show Kids Weather Button?', 'mulleborg'),
+        'section'  => 'kids_weather_section',
+        'type'     => 'checkbox',
+    ));
+
+}
+add_action( 'customize_register', 'mulleborg_customize_register' );
+
+// Helper that returns 'idag' or 'imorgon' based on current time
+function mulleborg_get_day_label() {
+    $current_hour = (int) current_time('H'); 
+    if ($current_hour >= 17) {
+        return 'imorgon';
+    } else {
+        return 'idag';
+    }
+}
+
