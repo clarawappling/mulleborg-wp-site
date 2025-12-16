@@ -938,3 +938,12 @@ font-weight: 400;
         transform: translateY(0);
     }
 }
+
+@media (min-width: 768px) {
+.error-image-wrapper img {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+}   
+}
