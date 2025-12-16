@@ -20,7 +20,7 @@ get_header();
 
 
          <?php if ($heading || $text_section) : ?> 
-            <div class="info-box flex yellow-bg" id="staff-intro">
+            <div class="info-box flex" id="staff-intro">
               <?php if ($heading) : ?>
             <h2><?php echo esc_html($heading); ?></h2>
         <?php endif; ?>
