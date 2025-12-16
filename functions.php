@@ -193,7 +193,7 @@ $prec   = $data['hourly']['precipitation'];
 $wcodes = $data['hourly']['weathercode'];
 $winds  = $data['hourly']['windspeed_10m'];
 
-// 4Identifiera vilka timmar som hör till idag eller imorgon
+// Identifiera vilka timmar som hör till idag eller imorgon
 $target_date = date('Y-m-d', strtotime("+$index day"));
 
 // Filtrera fram enbart timmar mellan 07–17
@@ -423,60 +423,38 @@ if ($temp < 10) {
 
 
     $output .= "</div>";
+    $output .= var_dump($current_hour +1) + "1";
 
     return $output;
 });
 
-// AJAX handler for kids clothes modal
-//PUT BACK WHEN TESTING FINISHED
-// function mulleborg_ajax_kids_clothes() {
-//     // Caching
-//     $cache_key = 'kids_clothes_forecast';
-//     $cached = get_transient( $cache_key );
-
-//     if ( $cached ) {
-//         echo $cached;
-//         wp_die();
-//     }
-
-//     // Run existing shortcode logic but without returning it immediately
-//     ob_start();
-//     echo do_shortcode('[kids_clothes_temp_for_windchill]');
-//     $output = ob_get_clean();
-
-//     // Cache for 15 minutes (900 seconds)
-//     set_transient( $cache_key, $output, 900 ); 
-
-//     echo $output;
-//     wp_die(); 
-// }
 function mulleborg_ajax_kids_clothes() {
-    // Disable caching during development/testing
-    $use_cache = true; // set to false to skip cache
+    nocache_headers();
 
-    if ($use_cache) {
-        $cache_key = 'kids_clothes_forecast';
+    $use_cache = true; //enable/disable while testing
+    $cache_key = 'kids_clothes_forecast_v1'; // versioned key
+
+    if ( $use_cache ) {
         $cached = get_transient( $cache_key );
 
-        if ( $cached ) {
+        if ( $cached !== false ) {
             echo $cached;
             wp_die();
         }
     }
 
-    // Run existing shortcode logic
     ob_start();
     echo do_shortcode('[kids_clothes_temp_for_windchill]');
     $output = ob_get_clean();
 
-    if ($use_cache) {
-        // Cache for 15 minutes (900 seconds)
+    if ( $use_cache ) {
         set_transient( $cache_key, $output, 900 );
     }
 
     echo $output;
-    wp_die(); 
+    wp_die();
 }
+
 
 add_action( 'wp_ajax_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
 add_action( 'wp_ajax_nopriv_get_kids_clothes', 'mulleborg_ajax_kids_clothes' );
