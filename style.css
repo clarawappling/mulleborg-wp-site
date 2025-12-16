@@ -855,7 +855,7 @@ padding-right: 3rem;
     background: var(--cream);
     width: 100%;
     max-width: 500px;  /* keeps it beautiful on desktop */
-    max-height: 90vh;
+    max-height: 80vh;
     border-radius: 22px 22px 0 0;
     padding: 28px 22px 40px;
     box-shadow: 0 -6px 30px rgba(0,0,0,0.2);
@@ -910,7 +910,7 @@ padding-right: 3rem;
 .weather-conditions-box {
     margin-top: 1rem;
     background: #ffeed5;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 22px;
 }
 
