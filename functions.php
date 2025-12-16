@@ -423,7 +423,6 @@ if ($temp < 10) {
 
 
     $output .= "</div>";
-    $output .= var_dump($current_hour +1) + "1";
 
     return $output;
 });
