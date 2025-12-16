@@ -863,6 +863,7 @@ padding-right: 3rem;
     animation: kidsSlideUp 0.33s ease-out forwards;
     overflow-y: auto;
     position: relative;
+    font-size: 0.9rem;
 }
 
 /* Slide animation*/
