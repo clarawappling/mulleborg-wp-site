@@ -35,7 +35,7 @@ $intro_text  = get_field('intro_text');
     <div class="flex intro">
 
     <?php if ($intro_title) : ?>
-        <h2><?php echo esc_html($intro_title); ?></h2>
+        <h1><?php echo esc_html($intro_title); ?></h1>
     <?php endif; ?>
     <?php if ($intro_text) : ?>
         <div><?php echo wp_kses_post($intro_text); ?></div>
@@ -74,7 +74,7 @@ $green_btn_text = get_field('green_box_button_text');
     <div class="flex green-bg info-box extended-height">
         
         <?php if ($green_title) : ?>
-            <h2><?php echo esc_html($green_title); ?></h2>
+            <h1><?php echo esc_html($green_title); ?></h1>
         <?php endif; ?>
 
         <?php if ($green_text) : ?>
@@ -118,7 +118,7 @@ $orange_btn_text = get_field('orange_box_button_text');
 </div></div>
     <div class="flex orange-bg info-box extended-height">
         <?php if ($orange_title) : ?>
-            <h2><?php echo esc_html($orange_title); ?></h2>
+            <h1><?php echo esc_html($orange_title); ?></h1>
         <?php endif; ?>
 
         <?php if ($orange_text) : ?>
@@ -158,7 +158,7 @@ $yellow_text  = get_field('yellow_box_text');
 </div></div>
     <div class="flex yellow-bg info-box extended-height">
         <?php if ($yellow_title) : ?>
-            <h2><?php echo esc_html($yellow_title); ?></h2>
+            <h1><?php echo esc_html($yellow_title); ?></h1>
         <?php endif; ?>
 
         <?php if ($yellow_text) : ?>

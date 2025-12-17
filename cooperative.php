@@ -10,7 +10,7 @@ get_header();
     <?php endif; ?>
     <div class="flex orange-bg info-box">
  <?php if ($heading = get_field('cooperative_page_heading')) : ?>
-    <h2><?php echo esc_html($heading); ?></h2>
+    <h1><?php echo esc_html($heading); ?></h1>
 <?php endif; ?>
 
 <?php if ($text = get_field('cooperative_page_text')) : ?>

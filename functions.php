@@ -400,7 +400,7 @@ if ($temp < 10) {
 
     // HTML-output med ikoner
     $output  = "<div class='kids-clothes-box flex'>";
-    $output .= "<h3><strong>Vad ska mitt barn ha på sig på Mulleborg {$day}?</strong></h3>";
+    $output .= "<h2><strong>Vad ska mitt barn ha på sig på Mulleborg {$day}?</strong></h2>";
     $output .= "<ul style='text-align: left'>";
     $output .= "<li>👟 <strong>På fötterna:</strong> " . esc_html($shoesRecommendation) . "</li>";
     $output .= "<li>👕👖 <strong>Kläder:</strong> " . esc_html($innerWearRecommendation) . "</li>";

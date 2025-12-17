@@ -17,7 +17,7 @@ $outdoors_text_1 = get_field('outdoors_text_section_1');
 if ($outdoors_heading || $outdoors_text_1) : ?>
     <div class="flex green-bg info-box">
         <?php if ($outdoors_heading) : ?>
-            <h2><?php echo esc_html($outdoors_heading); ?></h2>
+            <h1><?php echo esc_html($outdoors_heading); ?></h1>
         <?php endif; ?>
 
         <?php if ($outdoors_text_1) : ?>
