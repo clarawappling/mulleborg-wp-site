@@ -17,7 +17,7 @@
         <!-- Address Block -->
         <?php if ($footerAddress1 || $footerAddress2) : ?>
             <div id="footer-address">
-                <h4>Address</h4>
+                <h3>Address</h3>
 
                 <?php if ($footerAddress1) : ?>
                     <p><?php echo esc_html($footerAddress1); ?></p>
@@ -33,7 +33,7 @@
         <!-- Phone Block -->
         <?php if ($footerPhone) : ?>
             <div id="footer-phone">
-                <h4>Telefon</h4>
+                <h3>Telefon</h3>
                 <p><?php echo esc_html($footerPhone); ?></p>
             </div>
         <?php endif; ?>

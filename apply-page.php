@@ -13,7 +13,7 @@ $external_apply_link = get_field('external_apply_link');
     <?php endif; ?>
     <div class="flex info-box">
  <?php if ($heading = get_field('apply_page_heading')) : ?>
-    <h2><?php echo esc_html($heading); ?></h2>
+    <h1><?php echo esc_html($heading); ?></h1>
 <?php endif; ?>
 
 <?php if ($text = get_field('apply_page_text_section')) : ?>
