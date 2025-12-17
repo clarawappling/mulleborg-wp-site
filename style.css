@@ -170,10 +170,17 @@ ul {
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding: 0.5rem 1rem;
-    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-top: 0rem;
     background: var(--cream);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 10px -6px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 10;
+
+
 }
 
 .custom-logo {
