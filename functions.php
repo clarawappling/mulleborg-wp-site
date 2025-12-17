@@ -156,6 +156,10 @@ function mulleborg_staff_title_placeholder( $title, $post ) {
 }
 add_filter( 'enter_title_here', 'mulleborg_staff_title_placeholder', 10, 2 );
 
+
+// --------------------
+// THIS IS WHERE THE WEATHER MAGIC HAPPENS
+// --------------------
 add_shortcode('kids_clothes_temp_for_windchill', function() {
 
    //  Bestäm idag/imorgon
@@ -227,7 +231,7 @@ $wind_values_ms  = array_column($daytime_data, 'wind_ms');
 $max_wind_kmh = !empty($wind_values_kmh) ? max($wind_values_kmh) : 0;
 $max_wind_ms  = !empty($wind_values_ms) ? max($wind_values_ms) : 0;
 $wind_m_s     = $max_wind_ms;
-$precip = max(array_column($daytime_data, 'prec'));
+$precip = $precip = array_sum(array_column($daytime_data, 'prec'));
 $weather_codes = array_column($daytime_data, 'wcode');
 $clear_sky = in_array(0, $weather_codes) || in_array(1, $weather_codes);
 
@@ -415,10 +419,11 @@ if ($temp < 10) {
     }
     $output .= "</ul>";
     $output .= "<div class='weather-conditions-box'>";
-    $output .= "Medeltemperatur {$day}: " . round($temp, 1) . "°C<br>";
+    $output .= "<h3>Vädret {$day} (kl 7-17)</h3>";
+    $output .= "Medeltemperatur: " . round($temp, 1) . "°C<br>";
     $output .= "Känns som: " . round($feels_like, 1) . "°C<br>";
     $output .= "Nederbörd: {$precip} mm<br>";
-    $output .= "Vind: " . round($wind_m_s, 1) . " m/s</p>";
+    $output .= "Vind: " . round($wind_m_s, 1) . " m/s";
     $output .= "</div>";
 
 
@@ -430,7 +435,7 @@ if ($temp < 10) {
 function mulleborg_ajax_kids_clothes() {
     nocache_headers();
 
-    $use_cache = true; //enable/disable while testing
+    $use_cache = false; //enable/disable while testing
     $cache_key = 'kids_clothes_forecast_v1'; // versioned key
 
     if ( $use_cache ) {
