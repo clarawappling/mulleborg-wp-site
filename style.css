@@ -803,6 +803,10 @@ font-weight: 400;
     margin-top: 2rem;
 }
 
+.contact-wrapper .top-header {
+    margin-top: 0rem;
+}
+
 .contact-wrapper h2 {
     margin-bottom: 0rem;
     margin-top: 2rem;
