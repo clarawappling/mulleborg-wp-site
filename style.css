@@ -840,6 +840,10 @@ padding-right: 3rem;
     color: var(--blue);
 }
 
+.contact-wrapper a:hover {
+    color: var(--darkBlue);
+}
+
 
 
 /*----WEATHER MODAL-----*/
@@ -977,5 +981,9 @@ padding-right: 3rem;
 
 .apply-page .apply-contact a {
  color: var(--blue);
+}
+
+.apply-page .apply-contact a:hover {
+ color: var(--darkBlue);
 }
 
