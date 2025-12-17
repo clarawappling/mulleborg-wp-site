@@ -176,7 +176,7 @@ ul {
     padding-left: 1rem;
     margin-top: 0rem;
     background: var(--cream);
-    box-shadow: 0 4px 10px -6px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 10px -4px rgba(0,0,0,0.08);
     position: relative;
     z-index: 10;
 
@@ -223,7 +223,7 @@ ul {
     background-color: var(--cream);
     color: var(--black);
     padding: 50px 20px;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.08);
+    box-shadow: 0 -4px 10px -4px rgba(0,0,0,0.08);
 }
 
 .footer-inner {
