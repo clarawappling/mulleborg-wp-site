@@ -806,14 +806,29 @@ padding-right: 3rem;
 .contact-wrapper {
     padding-top: 4rem;
     padding-bottom: 4rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
 
 .contact-wrapper h1 {
     color: var(--forest);
     margin-left: 1rem;
     margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+.contact-wrapper h2 {
+margin-bottom: 0rem;
+margin-top: 2rem;
+ line-height: 2;
+
+}
+
+.contact-wrapper p {
+margin-bottom: 0rem;
+margin-top: 0rem;
+ line-height: 2;
+
 }
 
 .contact-wrapper a {
