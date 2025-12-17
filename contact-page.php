@@ -10,7 +10,7 @@ $contact_page_text_editor = get_field('contact_page_text_editor');
 <?php if ($contact_page_heading || $contact_page_text_editor ) :?>
 <div>   
     <?php if ($contact_page_heading) : ?>
-            <h1><?php echo esc_html($contact_page_heading); ?></h1>
+            <h2><?php echo esc_html($contact_page_heading); ?></h2>
         <?php endif; ?>
 </div>  
 <div>   
