@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 
     // ---- WEATHER MODAL LOGIC ----
     const modal = document.getElementById('kidsModal');
@@ -26,7 +26,27 @@ document.addEventListener('DOMContentLoaded', function() {
         return; // exit early if weather button is disabled
     }
 
-    // open
+    /* --------------------------------
+       SCROLL → COMPACT BUTTON LOGIC
+    ---------------------------------- */
+const SCROLL_TRIGGER = 150;
+let isScrolled = false;
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > SCROLL_TRIGGER && !isScrolled) {
+        openBtn.classList.add('is-scrolled');
+        isScrolled = true;
+    } else if (window.scrollY <= SCROLL_TRIGGER && isScrolled) {
+        openBtn.classList.remove('is-scrolled');
+        isScrolled = false;
+    }
+});
+
+
+    /* --------------------------------
+       MODAL OPEN
+    ---------------------------------- */
+
     openBtn.addEventListener('click', () => {
         modal.style.display = 'flex';
         sheet.style.animation = "kidsSlideUp 0.33s ease-out forwards";
@@ -48,12 +68,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // close
+    /* --------------------------------
+       MODAL CLOSE
+    ---------------------------------- */
+
     function closeSheet() {
         sheet.style.animation = "kidsSlideDown 0.25s ease-in forwards";
         setTimeout(() => {
             modal.style.display = 'none';
-            document.body.style.overflow = ""; 
+            document.body.style.overflow = "";
         }, 250);
     }
 
@@ -67,6 +90,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-
 

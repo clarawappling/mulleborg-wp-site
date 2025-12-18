@@ -79,8 +79,12 @@
 </div>
 
 <button id="openKidsModal" class="kids-sticky-btn ius_dark_brand-color-background">
-    Vad ska mitt barn ha på sig <?php echo mulleborg_get_day_label(); ?>?
+    <span class="kids-btn-icon">👕</span>
+    <span class="kids-btn-text">
+        Vad ska mitt barn ha på sig <?php echo mulleborg_get_day_label(); ?>?
+    </span>
 </button>
+
 <?php endif; ?>
 
 

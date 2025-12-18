@@ -803,6 +803,10 @@ font-weight: 400;
     margin-top: 2rem;
 }
 
+.contact-wrapper .top-header {
+    margin-top: 0rem;
+}
+
 .contact-wrapper h2 {
     margin-bottom: 0rem;
     margin-top: 2rem;
@@ -888,6 +892,11 @@ font-weight: 400;
     cursor: pointer;
     z-index: 9999;
     font-family: 'Outfit';
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 @keyframes kidsSlideDown {
@@ -912,6 +921,56 @@ font-weight: 400;
     }
     
 }
+
+/* icon default hidden on top */
+.kids-btn-icon {
+    display: none;
+    font-size: 1rem;
+}
+
+/* SCROLLED STATE */
+.kids-sticky-btn.is-scrolled {
+    padding: 12px;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    justify-content: center;
+}
+
+/* hide text when scrolled */
+.kids-sticky-btn.is-scrolled .kids-btn-text {
+    display: none;
+}
+
+/* show icon when scrolled */
+.kids-sticky-btn.is-scrolled .kids-btn-icon {
+    display: block;
+}
+
+.kids-sticky-btn.is-scrolled::after {
+    content: "Klädråd för barn";
+    position: absolute;
+    right: 60px;
+    background: #000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.kids-sticky-btn.is-scrolled:hover::after {
+    opacity: 1;
+}
+
+.kids-sticky-btn.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+}
+
 
 /*Custom Error page 404 with Mulle*/
 
