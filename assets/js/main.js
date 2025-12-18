@@ -29,27 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --------------------------------
        SCROLL → COMPACT BUTTON LOGIC
     ---------------------------------- */
-
 const SCROLL_TRIGGER = 150;
 let isScrolled = false;
-let scrollTimeout = null;
 
 window.addEventListener('scroll', () => {
-
-    // Hide while scrolling
-    openBtn.classList.add('is-hidden');
-
-    // Clear previous timer
-    clearTimeout(scrollTimeout);
-
-  const REAPPEAR_DELAY = window.innerWidth < 768 ? 700 : 450;
-
-scrollTimeout = setTimeout(() => {
-    openBtn.classList.remove('is-hidden');
-}, REAPPEAR_DELAY);
-
-
-    // Compact / expand button
     if (window.scrollY > SCROLL_TRIGGER && !isScrolled) {
         openBtn.classList.add('is-scrolled');
         isScrolled = true;
