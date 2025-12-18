@@ -15,6 +15,10 @@ $outdoors_heading = get_field('outdoors_heading');
 $outdoors_text_1 = get_field('outdoors_text_section_1');
 
 if ($outdoors_heading || $outdoors_text_1) : ?>
+<div class="section">
+    <div class="section-divider divider-to-green">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
     <div class="flex green-bg info-box">
         <?php if ($outdoors_heading) : ?>
             <h1><?php echo esc_html($outdoors_heading); ?></h1>
@@ -24,6 +28,10 @@ if ($outdoors_heading || $outdoors_text_1) : ?>
             <div><?php echo wp_kses_post($outdoors_text_1); ?></div>
         <?php endif; ?>
     </div>
+    <div class="section">
+    <div class="section-divider divider-to-green">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-bottom.svg' ); ?>
+</div></div>
 <?php endif; ?>
 </div>
 <div class=section-box>
@@ -39,6 +47,10 @@ $outdoors_link_tip = get_field('outdoors_link_tip');
 $i_ur_link = get_field('i_ur_och_skur_link');
 
 if ($outdoors_text_2 || $outdoors_link_tip || $i_ur_link) : ?>
+<div class="section">
+    <div class="section-divider divider-to-green">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
     <div class="flex green-bg info-box">
         <?php if ($outdoors_text_2) : ?>
             <div class="top-margin"><?php echo wp_kses_post($outdoors_text_2); ?></div>

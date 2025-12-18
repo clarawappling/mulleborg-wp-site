@@ -69,7 +69,7 @@ $green_btn_text = get_field('green_box_button_text');
     <?php endif; ?>
 <div class="section">
     <div class="section-divider divider-to-green">
-    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/scallop.svg' ); ?>
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
 </div></div>
     <div class="flex green-bg info-box extended-height">
         

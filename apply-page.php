@@ -11,6 +11,10 @@ $external_apply_link = get_field('external_apply_link');
             <img src="<?php echo esc_url($cooperative_page_image['url']); ?>" alt="<?php echo esc_attr($cooperative_page_image['alt']); ?>">
         </div>
     <?php endif; ?>
+    <div class="section">
+    <div class="section-divider divider-to-cream">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
     <div class="flex info-box">
  <?php if ($heading = get_field('apply_page_heading')) : ?>
     <h1><?php echo esc_html($heading); ?></h1>
