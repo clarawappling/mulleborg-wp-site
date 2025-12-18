@@ -585,6 +585,7 @@ ul {
     justify-content: flex-start;
     align-items: center;
     color:var(--wood);
+    
 }
 
 .staff-image-wrapper {
@@ -598,6 +599,9 @@ ul {
     border-radius: 50%;
     max-width: 120px;
     height: auto;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+    /* filter: grayscale(100%); */
 }
 
 .staff-name {
