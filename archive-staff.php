@@ -16,6 +16,10 @@ get_header();
             > 
     <?php endif; ?>
     </div>
+    <div class="section">
+    <div class="section-divider divider-to-cream">
+    <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
+</div></div>
 <div class="staff-archive">
 
 
