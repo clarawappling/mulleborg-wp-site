@@ -106,6 +106,8 @@ a {
     font-family: 'Autour One', 'sans-serif';
     text-transform: uppercase;
     margin-top: 3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+;
 }
 
 .btn:hover, .hero-btn:hover {
@@ -345,6 +347,8 @@ ul {
     transition: background 0.3s ease;
     font-family: 'Autour One', 'sans-serif';
     text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(36, 33, 33, 0.97);
+
 }
 
 .hero-btn:hover {
