@@ -253,6 +253,58 @@ if ($temp <= 10 && $max_wind_kmh >= 5) {
     $feels_like = $temp;
 }
 
+// Initialize empty string
+$weatherEmoji = '';
+
+// Loop through hourly weather codes (or just daytime ones)
+foreach ($weather_codes as $code) {
+    switch ($code) {
+        case 0:  $weatherEmoji .= '☀️'; break; // Clear sky
+        case 1:  $weatherEmoji .= '🌤️'; break; // Mainly clear
+        case 2:  $weatherEmoji .= '⛅'; break; // Partly cloudy
+        case 3:  $weatherEmoji .= '☁️'; break; // Overcast
+        case 45:
+        case 48: $weatherEmoji .= '🌫️'; break; // Fog
+        case 51:
+        case 53:
+        case 55: $weatherEmoji .= '🌦️'; break; // Drizzle
+        case 61:
+        case 63:
+        case 65: $weatherEmoji .= '🌧️'; break; // Rain
+        case 66:
+        case 67: $weatherEmoji .= '🌧️❄️'; break; // Freezing rain
+        case 71:
+        case 73:
+        case 75: $weatherEmoji .= '❄️'; break; // Snow
+        case 77: $weatherEmoji .= '🌨️'; break; // Snow grains
+        case 80:
+        case 81:
+        case 82: $weatherEmoji .= '🌧️'; break; // Rain showers
+        case 85:
+        case 86: $weatherEmoji .= '❄️'; break; // Snow showers
+        case 95:
+        case 96:
+        case 99: $weatherEmoji .= '⛈️'; break; // Thunderstorm
+        default: $weatherEmoji .= '🌤️'; break; // fallback
+    }
+}
+
+// Add wind symbol if strong
+if ($max_wind_ms >= 8) {
+    $weatherEmoji .= ' 🌬️';
+}
+
+// Split string into individual emojis using regex
+$icons = preg_split('//u', $weatherEmoji, -1, PREG_SPLIT_NO_EMPTY);
+
+// Remove duplicates
+$uniqueIcons = implode('', array_unique($icons));
+
+$output .= "<div class='weather-illustration'>{$uniqueIcons}</div>";
+
+
+
+
 // CLOTHING RECOMMENDATIONS
 
 //SKOR 
@@ -426,15 +478,15 @@ if ($temp < 10) {
 
     $output .= "</ul>";
     $output .= "<div class='weather-conditions-box'>";
-    $output .= "<h3>Vädret {$day} (kl 7-17)</h3>";
-    $output .= "Medeltemperatur: " . round($temp, 1) . "°C<br>";
+    $output .= "<div class='weather-illustration'>{$uniqueIcons}</div>";
+    $output .= "<h3> " . round($temp, 1) . "°C</h3>";
     $output .= "Känns som: " . round($feels_like, 1) . "°C<br>";
     $output .= "Nederbörd: {$precip} mm<br>";
     $output .= "Vind: " . round($wind_m_s, 1) . " m/s";
     $output .= "</div>";
+   // Weather illustration / visual
 
-
-    $output .= "</div>";
+$output .= "</div>"; // close main box
 
     return $output;
 });
