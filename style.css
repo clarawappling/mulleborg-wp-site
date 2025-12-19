@@ -106,6 +106,8 @@ a {
     font-family: 'Autour One', 'sans-serif';
     text-transform: uppercase;
     margin-top: 3rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+;
 }
 
 .btn:hover, .hero-btn:hover {
@@ -345,6 +347,8 @@ ul {
     transition: background 0.3s ease;
     font-family: 'Autour One', 'sans-serif';
     text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(36, 33, 33, 0.97);
+
 }
 
 .hero-btn:hover {
@@ -581,6 +585,7 @@ ul {
     justify-content: flex-start;
     align-items: center;
     color:var(--wood);
+    
 }
 
 .staff-image-wrapper {
@@ -594,6 +599,9 @@ ul {
     border-radius: 50%;
     max-width: 120px;
     height: auto;
+    object-fit: cover;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+    /* filter: grayscale(100%); */
 }
 
 .staff-name {
