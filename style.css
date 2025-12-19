@@ -191,6 +191,11 @@ ul {
     top: 0px;
     right: 0px;
     left: 0px;
+    padding-top: 0.2rem;
+    padding-bottom: 0.1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    transition: background 0.6s ease, box-shadow 0.3s ease;
 }
 
 .custom-logo {
