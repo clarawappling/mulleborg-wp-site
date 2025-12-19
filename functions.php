@@ -184,11 +184,13 @@ $url = add_query_arg(array(
 ), 'https://api.open-meteo.com/v1/forecast');
 
 $response = wp_remote_get($url, array('timeout' => 10));
-if (is_wp_error($response)) return "<p>Väderfel: kunde inte ansluta.</p>";
+if (is_wp_error($response)) return "<!--weather-error--><p>Väderfel: kunde inte ansluta.</p>";
+
 
 $body = wp_remote_retrieve_body($response);
 $data = json_decode($body, true);
-if (empty($data['hourly'])) return "<p>Väderfel: prognos saknas.</p>";
+if (empty($data['hourly'])) return "<!--weather-error--><p>Väderfel: prognos saknas.</p>";
+
 
 // Skapa en array med timvis data
 $times  = $data['hourly']['time'];
@@ -198,7 +200,9 @@ $wcodes = $data['hourly']['weathercode'];
 $winds  = $data['hourly']['windspeed_10m'];
 
 // Identifiera vilka timmar som hör till idag eller imorgon
-$target_date = date('Y-m-d', strtotime("+$index day"));
+// $target_date = date('Y-m-d', strtotime("+$index day"));
+$target_date = wp_date('Y-m-d', strtotime("+$index day"), wp_timezone());
+
 
 // Filtrera fram enbart timmar mellan 07–17
 $daytime_data = array();
@@ -222,8 +226,9 @@ if ($hour >= 7 && $hour <= 17) {
 
 //  Sammanställ prognos för dagtid
 if (empty($daytime_data)) {
-    return "<p>Oops, ingen väderdata hittades.</p>";
+    return "<!--weather-error--><p>Väderprognos för dagtid saknas just nu. Försök igen lite senare.</p>";
 }
+
 
 $temp = array_sum(array_column($daytime_data, 'temp')) / count($daytime_data);
 $wind_values_kmh = array_column($daytime_data, 'wind_kmh');
@@ -435,27 +440,32 @@ if ($temp < 10) {
 function mulleborg_ajax_kids_clothes() {
     nocache_headers();
 
-    $use_cache = false; //enable/disable while testing
-    $cache_key = 'kids_clothes_forecast_v1'; // versioned key
+    $use_cache = false;
+    $cache_key = 'kids_clothes_forecast_v1';
 
-    if ( $use_cache ) {
-        $cached = get_transient( $cache_key );
-
-        if ( $cached !== false ) {
-            echo $cached;
-            wp_die();
-        }
-    }
+    // get cached value to use as fallback
+    $cached = $use_cache ? get_transient( $cache_key ) : false;
 
     ob_start();
     echo do_shortcode('[kids_clothes_temp_for_windchill]');
     $output = ob_get_clean();
 
-    if ( $use_cache ) {
-        set_transient( $cache_key, $output, 900 );
+    $is_error = str_contains( $output, '<!--weather-error-->' );
+
+    if ( ! $is_error ) {
+        // When fresh output is valid → cache & serve
+        if ( $use_cache ) {
+            set_transient( $cache_key, $output, 900 );
+        }
+        echo $output;
+    } elseif ( $cached !== false ) {
+        // ⚠️ Fresh output failed → serve last good cache
+        echo $cached;
+    } else {
+        // No cache exists → serve "real"/fresh data
+        echo $output;
     }
 
-    echo $output;
     wp_die();
 }
 
