@@ -128,7 +128,7 @@ ul {
 
 .section-divider {
     position: absolute;
-    bottom: -30px; /* this makes the scallops hang out */
+    bottom: -30px;
     left: 0;
     width: 100%;
     line-height: 0;
