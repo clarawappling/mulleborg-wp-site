@@ -12,6 +12,7 @@
         $footerAddress2  = $footer_id ? get_field('footer_address_line_2', $footer_id) : '';
         $footerCTA_Text  = $footer_id ? get_field('footer_cta_text', $footer_id) : '';
         $footerCTA_Link  = $footer_id ? get_field('footer_cta_page', $footer_id) : '';
+        $footer_image    = $footer_id ? get_field('footer_image', $footer_id) : '';
         ?>
 
         <!-- Address Block -->
@@ -62,12 +63,30 @@
             ?>
         </div>
 
+   <!--- Footer illustration mobile -->     
+
+<?php
+if ( $footer_image ) :
+?>
+    <div class="footer-illustration">
+        <img
+            src="<?php echo esc_url( $footer_image['url'] ); ?>"
+            alt="<?php echo esc_attr( $footer_image['alt'] ?: '' ); ?>"
+            loading="lazy"
+            width="<?php echo esc_attr( $footer_image['width'] ); ?>"
+            height="<?php echo esc_attr( $footer_image['height'] ); ?>"
+        >
+    </div>
+<?php endif; ?>
+
+
         <!-- Copyright -->
         <div class="footer-column footer-copy">
             &copy; <?php echo date('Y'); ?> <?php echo esc_html(get_bloginfo('name')); ?>
         </div>
 
     </div>
+
 </footer>
 
 <?php if ( get_theme_mod('kids_weather_enabled', true) ) : ?>
