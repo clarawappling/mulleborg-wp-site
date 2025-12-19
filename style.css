@@ -181,11 +181,21 @@ ul {
     box-shadow: 0 4px 10px -4px rgba(0,0,0,0.08);
     position: relative;
     z-index: 10;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-inner.scrolled
+{
+    z-index: 9999;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
 }
 
 .custom-logo {
-    max-height: 240px;
-    max-width: 240px;
+    max-height: 150px;
+    max-width: 150px;
     height: auto;
     justify-self: flex-start;
 }
@@ -197,6 +207,12 @@ ul {
     justify-self: flex-start;
 }
 
+@media (min-width: 768px) {
+    .custom-logo {
+    max-height: 240px;
+    max-width: 240px;
+}
+}
 /* ------------------ NAVIGATION ------------------ */
 .main-navigation ul {
     list-style: none;
