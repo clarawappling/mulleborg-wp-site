@@ -287,8 +287,31 @@ ul {
     transition: color 0.3s;
 }
 
+/* Footer illustration */
+.footer-illustration {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* decorative only */
+}
+
+.footer-illustration img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+    .footer-illustration {
+    display: none;
+}
+
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+
     .footer-inner {
         flex-direction: column;
         text-align: center;
@@ -301,6 +324,7 @@ ul {
     .footer-branding p {
     max-width: 15rem;
 }
+
 
 }
 
@@ -993,6 +1017,7 @@ font-weight: 400;
     height: auto;
     max-height: 40vh;
     object-fit: contain;
+    opacity: 0.8;
 }
 .error-image-wrapper {
     animation: fadeIn 0.6s ease-in-out;
