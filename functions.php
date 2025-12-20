@@ -262,7 +262,7 @@ foreach ($weather_codes as $code) {
         case 0:  $weatherEmoji .= '☀️'; break; // Clear sky
         case 1:  $weatherEmoji .= '🌤️'; break; // Mainly clear
         case 2:  $weatherEmoji .= '⛅'; break; // Partly cloudy
-        case 3:  $weatherEmoji .= '☁️'; break; // Overcast
+        case 3: $weatherEmoji .= '🌥️'; break; // Overcast / mostly cloudy ✅
         case 45:
         case 48: $weatherEmoji .= '🌫️'; break; // Fog
         case 51:
