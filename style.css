@@ -52,9 +52,10 @@ body {
     color: #333;
 }
 
-body, html {
-    overflow-x: hidden;
+body {
+    overflow-x: clip; /* modern replacement for hidden but allows sticky */
 }
+
 
 
 /* ------------------ GLOBAL ELEMENTS ------------------ */
@@ -168,34 +169,30 @@ ul {
 
 }
 /* ------------------ HEADER LAYOUT ------------------ */
+
 .header-inner {
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    margin-top: 0rem;
+    top: 0;
+    right: 0;
+    left: 0;
     background: var(--cream);
     box-shadow: 0 4px 10px -4px rgba(0,0,0,0.08);
-    position: relative;
-    z-index: 10;
+    position: sticky;
+    z-index: 100;
     transition: background 0.3s ease, box-shadow 0.3s ease;
+
 }
 
-.header-inner.scrolled
-{
-    z-index: 9999;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    left: 0px;
-    padding-top: 0.2rem;
-    padding-bottom: 0.1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    transition: background 0.6s ease, box-shadow 0.3s ease;
+.header-inner.scrolled {
+    background: rgba(255, 247, 236, 0.9); /* slightly transparent */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .custom-logo {
@@ -353,6 +350,7 @@ ul {
 /* Hero container */
 .homepage-hero {
     position: relative;
+    z-index: 1;
     width: 100%;
     max-height: 800px; 
     overflow: hidden;
@@ -1098,3 +1096,9 @@ margin: 0.2rem;
  color: var(--darkBlue);
 }
 
+header.site-header,
+.header-inner {
+    position: sticky !important;
+    top: 0;
+    z-index: 999;
+}
