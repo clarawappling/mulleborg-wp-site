@@ -253,57 +253,47 @@ if ($temp <= 10 && $max_wind_kmh >= 5) {
     $feels_like = $temp;
 }
 
-// Initialize empty string
-$weatherEmoji = '';
+$hasSun   = false;
+$hasCloud = false;
+$hasRain  = false;
+$hasSnow  = false;
+$hasFog   = false;
+$hasStorm = false;
 
-// Loop through hourly weather codes (or just daytime ones)
 foreach ($weather_codes as $code) {
-    switch ($code) {
-        case 0:  $weatherEmoji .= '☀️'; break; // Clear sky
-        case 1:  $weatherEmoji .= '🌤️'; break; // Mainly clear
-        case 2:  $weatherEmoji .= '⛅'; break; // Partly cloudy
-        case 3: $weatherEmoji .= '🌥️'; break; // Overcast / mostly cloudy ✅
-        case 45:
-        case 48: $weatherEmoji .= '🌫️'; break; // Fog
-        case 51:
-        case 53:
-        case 55: $weatherEmoji .= '🌦️'; break; // Drizzle
-        case 61:
-        case 63:
-        case 65: $weatherEmoji .= '🌧️'; break; // Rain
-        case 66:
-        case 67: $weatherEmoji .= '🌧️❄️'; break; // Freezing rain
-        case 71:
-        case 73:
-        case 75: $weatherEmoji .= '❄️'; break; // Snow
-        case 77: $weatherEmoji .= '🌨️'; break; // Snow grains
-        case 80:
-        case 81:
-        case 82: $weatherEmoji .= '🌧️'; break; // Rain showers
-        case 85:
-        case 86: $weatherEmoji .= '❄️'; break; // Snow showers
-        case 95:
-        case 96:
-        case 99: $weatherEmoji .= '⛈️'; break; // Thunderstorm
-        default: $weatherEmoji .= '🌤️'; break; // fallback
+    if ($code === 0) $hasSun = true;
+    if (in_array($code, [1,2,3])) $hasCloud = true;
+    if (in_array($code, [51,53,55,61,63,65,80,81,82])) $hasRain = true;
+    if (in_array($code, [71,73,75,77,85,86])) $hasSnow = true;
+    if (in_array($code, [45,48])) $hasFog = true;
+    if (in_array($code, [95,96,99])) $hasStorm = true;
+}
+
+$icons = '';
+
+// Worst weather first
+if ($hasStorm) {
+    $icons .= '⛈️';
+} elseif ($hasSnow) {
+    $icons .= '❄️';
+} elseif ($hasRain) {
+    $icons .= '🌧️';
+} elseif ($hasFog) {
+    $icons .= '🌫️';
+} else {
+    // No precipitation or storm → sky state
+    if ($hasSun && $hasCloud) {
+        $icons .= '🌤️'; 
+    } elseif ($hasSun) {
+        $icons .= '☀️'; 
+    } elseif ($hasCloud) {
+        $icons .= '☁️';
     }
 }
 
-// Add wind symbol if strong
-if ($max_wind_ms >= 8) {
-    $weatherEmoji .= ' 🌬️';
+if ($max_wind_ms >= 6) {
+    $icons .= ' 🌬️';
 }
-
-// Split string into individual emojis using regex
-$icons = preg_split('//u', $weatherEmoji, -1, PREG_SPLIT_NO_EMPTY);
-
-// Remove duplicates
-$uniqueIcons = implode('', array_unique($icons));
-
-$output .= "<div class='weather-illustration'>{$uniqueIcons}</div>";
-
-
-
 
 // CLOTHING RECOMMENDATIONS
 
@@ -478,7 +468,7 @@ if ($temp < 10) {
 
     $output .= "</ul>";
     $output .= "<div class='weather-conditions-box'>";
-    $output .= "<div class='weather-illustration'>{$uniqueIcons}</div>";
+    $output .= "<div class='weather-illustration'>{$icons}</div>";
     $output .= "<h3> " . round($temp, 1) . "°C</h3>";
     $output .= "Känns som: " . round($feels_like, 1) . "°C<br>";
     $output .= "Nederbörd: {$precip} mm<br>";
@@ -494,7 +484,7 @@ $output .= "</div>"; // close main box
 function mulleborg_ajax_kids_clothes() {
     nocache_headers();
 
-    $use_cache = false;
+    $use_cache = true;
     $cache_key = 'kids_clothes_forecast_v1';
 
     // get cached value to use as fallback
