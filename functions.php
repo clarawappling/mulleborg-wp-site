@@ -169,7 +169,7 @@ if ($current_hour >= 17) {
     $index = 1;
 } else {
     $day = 'idag';
-    $index = 1;
+    $index = 0;
 }
 
 //  Hämta Open-Meteo prognos (TIMVIS)
