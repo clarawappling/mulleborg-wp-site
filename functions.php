@@ -484,7 +484,7 @@ $output .= "</div>"; // close main box
 function mulleborg_ajax_kids_clothes() {
     nocache_headers();
 
-    $use_cache = false;
+    $use_cache = true;
     $cache_key = 'kids_clothes_forecast_v1';
 
     // get cached value to use as fallback
