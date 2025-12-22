@@ -733,6 +733,12 @@ font-weight: 400;
     }
  }
 
+  @media (min-width: 1800px) {
+    .outdoors-page .section-box .info-box div {
+        max-width: 70%;
+    }
+ }
+
 
 /* ------FIXES FOR LARGER SCREENS--------*/
 @media (min-width: 1300px) {
@@ -822,10 +828,6 @@ font-weight: 400;
         max-width: 70%;
     }
 
-       .cooperative-page .info-box div {
-        max-width: 100%;
-    }
-
 }
 
 @media (min-width: 1300px) {
@@ -839,6 +841,14 @@ font-weight: 400;
 
    
 }
+
+@media (min-width: 1800px) {
+    .cooperative-page .info-box div {
+        max-width: 70%;
+    }
+   
+}
+
 
 /*----CONTACT PAGE-----*/
 .contact-wrapper {
