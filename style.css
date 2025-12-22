@@ -183,12 +183,15 @@ ul {
     left: 0;
     background: var(--cream);
     box-shadow: 0 4px 10px -4px rgba(0,0,0,0.08);
-    position: sticky;
-    z-index: 100;
     transition: background 0.3s ease, box-shadow 0.3s ease;
 
 }
-
+header.site-header,
+.header-inner {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
 .header-inner.scrolled {
     background: rgba(255, 247, 236, 0.9); /* slightly transparent */
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -1096,9 +1099,4 @@ margin: 0.2rem;
  color: var(--darkBlue);
 }
 
-header.site-header,
-.header-inner {
-    position: sticky !important;
-    top: 0;
-    z-index: 999;
-}
+
