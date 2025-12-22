@@ -733,6 +733,12 @@ font-weight: 400;
     }
  }
 
+  @media (min-width: 1800px) {
+    .outdoors-page .section-box .info-box div {
+        max-width: 70%;
+    }
+ }
+
 
 /* ------FIXES FOR LARGER SCREENS--------*/
 @media (min-width: 1300px) {
