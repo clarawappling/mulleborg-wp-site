@@ -293,6 +293,9 @@ header.site-header,
 #footer-address h3,
 #footer-phone h3 {
     margin-bottom: 0.2rem;
+    margin-top: 1.5rem;
+    margin-left: 1rem ;
+    margin-right: 1rem;
 }
 
 
@@ -379,7 +382,6 @@ header.site-header,
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
 }
 
 .hero-btn {
@@ -981,7 +983,7 @@ margin: 0.2rem;
 }
 
 .weather-conditions-box .weather-illustration {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 

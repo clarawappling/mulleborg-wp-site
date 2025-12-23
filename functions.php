@@ -179,7 +179,7 @@ $lon = 18.167468192093725;
 $url = add_query_arg(array(
     'latitude' => $lat,
     'longitude' => $lon,
-    'hourly' => 'temperature_2m,precipitation,weathercode,windspeed_10m',
+    'hourly' => 'temperature_2m,precipitation,weathercode,windspeed_10m,is_day',
     'timezone' => 'Europe/Stockholm'
 ), 'https://api.open-meteo.com/v1/forecast');
 
@@ -198,6 +198,8 @@ $temps  = $data['hourly']['temperature_2m'];
 $prec   = $data['hourly']['precipitation'];
 $wcodes = $data['hourly']['weathercode'];
 $winds  = $data['hourly']['windspeed_10m'];
+
+$is_day_arr = $data['hourly']['is_day'];
 
 // Identifiera vilka timmar som hör till idag eller imorgon
 // $target_date = date('Y-m-d', strtotime("+$index day"));
@@ -218,7 +220,8 @@ if ($hour >= 7 && $hour <= 17) {
         'prec'     => $prec[$i],
         'wcode'    => $wcodes[$i],
         'wind_ms'  => $winds[$i] / 3.6,
-        'wind_kmh' => $winds[$i]
+        'wind_kmh' => $winds[$i],
+        'is_day'   => (int) $is_day_arr[$i],
     );
 }
 
@@ -229,6 +232,13 @@ if (empty($daytime_data)) {
     return "<!--weather-error--><p>Väderprognos för dagtid saknas just nu. Försök igen lite senare.</p>";
 }
 
+$is_dark = true;
+foreach ($daytime_data as $hour) {
+    if ($hour['is_day'] === 1) {
+        $is_dark = false;
+        break;
+    }
+}
 
 $temp = array_sum(array_column($daytime_data, 'temp')) / count($daytime_data);
 $wind_values_kmh = array_column($daytime_data, 'wind_kmh');
@@ -281,8 +291,10 @@ if ($hasStorm) {
 } elseif ($hasFog) {
     $icons .= '🌫️';
 } else {
-    // No precipitation or storm → sky state
-    if ($hasSun && $hasCloud) {
+   // No precipitation or storm → sky state
+    if ($is_dark) {
+        $icons .= '🌙';
+    } elseif ($hasSun && $hasCloud) {
         $icons .= '🌤️'; 
     } elseif ($hasSun) {
         $icons .= '☀️'; 
