@@ -466,15 +466,15 @@ if ($temp < 10) {
     $output .= "<h2><strong>Vad ska mitt barn ha på sig på Mulleborg {$day}?</strong></h2>";
     $output .= "<ul style='text-align: left'>";
         if (!empty($headwearRecommendation)) {
-    $output .= "<li>🧢" . esc_html($headwearRecommendation) . "</li>";
+    $output .= "<li>🧢 " . esc_html($headwearRecommendation) . "</li>";
     }
    
     $output .= "<li>👕👖" . esc_html($innerWearRecommendation) . "</li>";
     if (!empty($outerWearRecommendation)) {
-        $output .= "<li>🧥" . esc_html($outerWearRecommendation) . "</li>";
+        $output .= "<li>🧥 " . esc_html($outerWearRecommendation) . "</li>";
     }
     if (!empty($mittensRecommendation)) {
-        $output .= "<li>🧤" . esc_html($mittensRecommendation) . "</li>";
+        $output .= "<li>🧤 " . esc_html($mittensRecommendation) . "</li>";
     }
      $output .= "<li>👟 " . esc_html($shoesRecommendation) . "</li>";
 
