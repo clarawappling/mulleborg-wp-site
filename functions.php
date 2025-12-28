@@ -469,7 +469,7 @@ if ($temp < 10) {
     $output .= "<li>🧢 " . esc_html($headwearRecommendation) . "</li>";
     }
    
-    $output .= "<li>👕👖" . esc_html($innerWearRecommendation) . "</li>";
+    $output .= "<li>👕 " . esc_html($innerWearRecommendation) . "</li>";
     if (!empty($outerWearRecommendation)) {
         $output .= "<li>🧥 " . esc_html($outerWearRecommendation) . "</li>";
     }
