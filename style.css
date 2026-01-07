@@ -72,18 +72,12 @@ h2 { font-size: 1.25rem; }
 h3 { font-size: 1rem; }
 h4 { font-size: 1rem; }
 
-
- h1, h2 {
- font-family: 'Autour One', sans-serif;
- }
-
-
 p, div {
     line-height: 1.6;
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color:#333; 
 }
 
