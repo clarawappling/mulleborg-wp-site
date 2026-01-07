@@ -32,7 +32,7 @@
     </div>
             
 <!-- Hamburger button -->
-<button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+<button id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="Open menu">
     <span class="bar"></span>
     <span class="bar"></span>
     <span class="bar"></span>
@@ -50,5 +50,5 @@
 
         </div>
 </header>
-	<div id="content" class="site-content" tabindex="-1">
-		<div class="col-full">
+<main id="main-content" class="site-content" tabindex="-1">
+    <div class="col-full">
