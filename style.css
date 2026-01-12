@@ -685,56 +685,80 @@ font-weight: 400;
 }
 
 
-/*----OUTDOORS PAGE-----*/
+/*----OUTDOORS PAGE AND COOPERATIVE PAGE-----*/
 
-.outdoors-page .top-margin {
+.outdoors-page .top-margin,
+.cooperative-page .top-margin {
     margin-top: 3rem ;
 }
 
  /*Large screens*/
  @media (min-width: 768px) {
     
-    .outdoors-page {
+    .outdoors-page, 
+    .cooperative-page {
         display: flex;
         flex-direction: column;
     }
 
-    .outdoors-page .section-box {
-        flex-direction: row;
-        border-top: var(--cream) 1px solid;
-        background-color: var(--sage);
-          
+    .outdoors-page .section-box, 
+    .cooperative-page .section-box {
+        flex-direction: row; 
     }
 
-    .outdoors-page .section-box:nth-child(odd) {
+    .outdoors-page .section-box{
+        flex-direction: row;
+        background-color: var(--sage);   
+    }
+
+        
+    .cooperative-page .section-box {
+      
+        background-color: var(--terracotta);   
+    }
+
+    .outdoors-page .section-box:nth-child(odd), 
+    .cooperative-page .section-box:nth-child(odd) {
         flex-direction: row-reverse;  
     }
 
-    .outdoors-page .section-box .info-box {
+    .outdoors-page .section-box .info-box,
+    .cooperative-page .section-box .info-box {
         width: unset;
     }
 
-    .outdoors-page .section-box .info-box div {
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div {
     max-width: 70%;
     }
 
-  .outdoors-page .section-box .image-wrapper img {
+  .outdoors-page .section-box .image-wrapper img,
+  .cooperative-page .section-box .image-wrapper img
+   {
     height: 500px;
     }
  }
 
  @media (min-width: 1300px) {
-    .outdoors-page .section-box .info-box div {
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div {
         max-width: 90%;
     }
 
-   .outdoors-page .section-box .image-wrapper img {
+   /* .outdoors-page .section-box .image-wrapper img,
+   .cooperative-page .section-box .image-wrapper img {
     height: 600px;
+    } */
+
+    .outdoors-page .section-box,
+    .cooperative-page .section-box {
+            border-top: var(--cream) 1px solid;
     }
  }
 
   @media (min-width: 1800px) {
-    .outdoors-page .section-box .info-box div {
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div {
         max-width: 70%;
     }
  }
@@ -828,36 +852,6 @@ font-weight: 400;
     }
 }
 
-/*--FIXES FOR DESKTOP, COOPERATIVE PAGE--*/
-
-@media (min-width: 768px) {
-    .cooperative-page .info-box div {
-        max-width: 70%;
-    }
-
-}
-
-@media (min-width: 1300px) {
-    .cooperative-page .info-box div {
-        max-width: 90%;
-    }
-
-        .cooperative-page .info-box {
-        padding-bottom: 2rem;
-    }
-
-       .cooperative-page {
-            background-color: var(--terracotta);
-          
-    }
-}
-
-@media (min-width: 1800px) {
-    .cooperative-page .info-box div {
-        max-width: 70%;
-    }
-   
-}
 
 
 /*----CONTACT PAGE-----*/
