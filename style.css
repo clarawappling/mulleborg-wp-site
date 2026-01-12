@@ -85,9 +85,10 @@ a {
 .flex {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;    
+    text-align: center;   
+    flex: 1; 
+    justify-content: center;
 }
 
 .btn {
@@ -460,7 +461,6 @@ header.site-header,
 .yellow-bg {
     background-color: var(--tipi);
     color: var(--wood);
-    justify-content: flex-start;
 }
 
 .yellow-bg h1 {
@@ -702,6 +702,7 @@ font-weight: 400;
     .outdoors-page .section-box {
         flex-direction: row;
         border-top: var(--cream) 1px solid;
+        background-color: var(--sage);
           
     }
 
@@ -745,17 +746,19 @@ font-weight: 400;
     .section-box {
         display: flex;
         flex-direction: column;
+        flex: 1;
+        align-items: stretch;
+ 
     }
 
     .sections-wrapper {
         display: flex;
         flex-direction: row-reverse;
         justify-content: center;
+        align-items: stretch; /* default, but important concept */
     }
 
-    .extended-height {
-        min-height: 25rem;   
-    }
+
   
     .info-box h1  {
         padding-left: 2rem;
@@ -787,6 +790,11 @@ font-weight: 400;
     .home .section-box {
         max-width: 430px;
         }
+
+    .home .info-box {
+        justify-content: flex-start;
+    }
+
     .home .green-bg {
         border-radius: 0px 0px 0px 40px;
     }
@@ -838,7 +846,10 @@ font-weight: 400;
         padding-bottom: 2rem;
     }
 
-   
+       .cooperative-page {
+            background-color: var(--terracotta);
+          
+    }
 }
 
 @media (min-width: 1800px) {

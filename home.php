@@ -71,7 +71,7 @@ $green_btn_text = get_field('green_box_button_text');
     <div class="section-divider divider-to-green">
     <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
 </div></div>
-    <div class="flex green-bg info-box extended-height">
+    <div class="flex green-bg info-box">
         
         <?php if ($green_title) : ?>
             <h1><?php echo esc_html($green_title); ?></h1>
@@ -156,7 +156,7 @@ $yellow_text  = get_field('yellow_box_text');
     <div class="section-divider divider-to-yellow">
     <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
 </div></div>
-    <div class="flex yellow-bg info-box extended-height">
+    <div class="flex yellow-bg info-box">
         <?php if ($yellow_title) : ?>
             <h1><?php echo esc_html($yellow_title); ?></h1>
         <?php endif; ?>
