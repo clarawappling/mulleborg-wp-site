@@ -43,16 +43,16 @@ if ($yellow_page_heading  || $yellow_page_text) : ?>
 <?php endif; ?>
 
 <?php 
-$yelllow_page_text_2 = get_field('yelllow_page_text_2');
+$yellow_page_text_2 = get_field('yellow_page_text_2');
 
-if ($yelllow_page_text_2) : ?>
+if ($yellow_page_text_2) : ?>
 <div class="section">
     <div class="section-divider divider-to-yellow">
     <?php echo file_get_contents( get_template_directory() . '/assets/dividers/svgs/wave-top.svg' ); ?>
 </div></div>
     <div class="flex yellow-bg info-box">
-        <?php if ($yelllow_page_text_2) : ?>
-            <div class="top-margin"><?php echo wp_kses_post($yelllow_page_text_2); ?></div>
+        <?php if ($yellow_page_text_2) : ?>
+            <div class="top-margin"><?php echo wp_kses_post($yellow_page_text_2); ?></div>
         <?php endif; ?>
     </div> 
 <?php endif; ?>
