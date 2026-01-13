@@ -163,6 +163,8 @@ ul {
 }
 
 }
+
+/* Dark mode display no dividers? */
 /* ------------------ HEADER LAYOUT ------------------ */
 
 .header-inner {
@@ -685,59 +687,107 @@ font-weight: 400;
 }
 
 
-/*----OUTDOORS PAGE-----*/
+/*----OUTDOORS PAGE, COOPERATIVE PAGE, YELLOW PAGE, AND CREAM PAGE-----*/
 
-.outdoors-page .top-margin {
-    margin-top: 3rem ;
+.outdoors-page .top-margin,
+.cooperative-page .top-margin,
+.yellow-page .top-margin,
+.cream-page .top-margin {
+    margin-top: 3rem;
 }
 
- /*Large screens*/
- @media (min-width: 768px) {
-    
-    .outdoors-page {
+/* Large screens */
+@media (min-width: 768px) {
+
+    .outdoors-page,
+    .cooperative-page,
+    .yellow-page,
+    .cream-page {
         display: flex;
         flex-direction: column;
     }
 
-    .outdoors-page .section-box {
+    .outdoors-page .section-box,
+    .cooperative-page .section-box,
+    .yellow-page .section-box,
+    .cream-page .section-box {
         flex-direction: row;
-        border-top: var(--cream) 1px solid;
+    }
+
+    .outdoors-page .section-box {
         background-color: var(--sage);
-          
     }
 
-    .outdoors-page .section-box:nth-child(odd) {
-        flex-direction: row-reverse;  
+    .cooperative-page .section-box {
+        background-color: var(--terracotta);
     }
 
-    .outdoors-page .section-box .info-box {
+    .yellow-page .section-box {
+        background-color: var(--tipi);
+    }
+
+    /* Cream page background */
+    .cream-page .section-box {
+        background-color: var(--cream);
+    }
+
+    .outdoors-page .section-box:nth-child(odd),
+    .cooperative-page .section-box:nth-child(odd),
+    .yellow-page .section-box:nth-child(odd),
+    .cream-page .section-box:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+    .outdoors-page .section-box .info-box,
+    .cooperative-page .section-box .info-box,
+    .yellow-page .section-box .info-box,
+    .cream-page .section-box .info-box {
         width: unset;
     }
 
-    .outdoors-page .section-box .info-box div {
-    max-width: 70%;
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div,
+    .yellow-page .section-box .info-box div,
+    .cream-page .section-box .info-box div {
+        max-width: 70%;
     }
 
-  .outdoors-page .section-box .image-wrapper img {
-    height: 500px;
+    .outdoors-page .section-box .image-wrapper img,
+    .cooperative-page .section-box .image-wrapper img,
+    .yellow-page .section-box .image-wrapper img,
+    .cream-page .section-box .image-wrapper img {
+        height: 500px;
     }
- }
+}
 
- @media (min-width: 1300px) {
-    .outdoors-page .section-box .info-box div {
+@media (min-width: 1300px) {
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div,
+    .yellow-page .section-box .info-box div,
+    .cream-page .section-box .info-box div {
         max-width: 90%;
     }
 
-   .outdoors-page .section-box .image-wrapper img {
-    height: 600px;
+    .outdoors-page .section-box,
+    .cooperative-page .section-box,
+    .yellow-page .section-box
+   {
+        border-top: var(--cream) 1px solid;
     }
- }
 
-  @media (min-width: 1800px) {
-    .outdoors-page .section-box .info-box div {
+    .cream-page .section-box {
+        border-bottom: var(--forest) 1px solid;
+    }
+}
+
+@media (min-width: 1800px) {
+    .outdoors-page .section-box .info-box div,
+    .cooperative-page .section-box .info-box div,
+    .yellow-page .section-box .info-box div,
+    .cream-page .section-box .info-box div {
         max-width: 70%;
     }
- }
+}
 
 
 /* ------FIXES FOR LARGER SCREENS--------*/
@@ -828,36 +878,6 @@ font-weight: 400;
     }
 }
 
-/*--FIXES FOR DESKTOP, COOPERATIVE PAGE--*/
-
-@media (min-width: 768px) {
-    .cooperative-page .info-box div {
-        max-width: 70%;
-    }
-
-}
-
-@media (min-width: 1300px) {
-    .cooperative-page .info-box div {
-        max-width: 90%;
-    }
-
-        .cooperative-page .info-box {
-        padding-bottom: 2rem;
-    }
-
-       .cooperative-page {
-            background-color: var(--terracotta);
-          
-    }
-}
-
-@media (min-width: 1800px) {
-    .cooperative-page .info-box div {
-        max-width: 70%;
-    }
-   
-}
 
 
 /*----CONTACT PAGE-----*/
