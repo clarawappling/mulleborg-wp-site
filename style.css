@@ -164,12 +164,6 @@ ul {
 
 }
 
-@media (prefers-color-scheme: dark) {
-    .section-divider {
-        display: none;
-    }
-}
-
 /* Dark mode display no dividers? */
 /* ------------------ HEADER LAYOUT ------------------ */
 
