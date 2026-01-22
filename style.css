@@ -20,10 +20,45 @@ Version: 1.o
 --tipi: #EDC678;
 --terracottaHover: #df7051;
 --black: #333;
+--white: #fff;
 --blue: #4377BB;
 --blueHover: #39649d;
 --darkBlue: #081b49;
+--bgCream:#FFF7EC;
+--textCream: #FFF7EC;
+--textBlack: #333;
+--textForest: #567961;
+--textWood: #675F3C;
+--darkCreamBg: #ffeed5;
+--transparentCreamBg: rgba(255, 247, 236, 0.9);
+--woodToBlack: #EDC678;
 }
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #FFF7EC;     /* Backgrounds become dark gray */
+    --terracotta: #b97564;   /* Slightly muted colors for contrast */
+    --forest: #57685e;
+    --sage: #445448;
+  --wood: #675F3C;
+    --tipi: #d9b85f;
+    --terracottaHover: #c96e54;
+    --black: #333;   /* Text becomes light */
+    --blue: #5a99d6;
+    --blueHover: #497bb0;
+    --darkBlue: #0e214f;
+    --bgCream:#313131;
+    --textCream:#ffffff;
+    --textBlack: #FFF7EC; 
+    --textForest: #aec9b7;
+    --textWood: #d9d5c4;
+    --darkCreamBg: #242424;
+    --transparentCreamBg: #242424db;
+    --woodToBlack: #313131;
+}
+}
+
 
 /*---Brand coloring IUS----*/
 .ius_brand-color-text {
@@ -47,12 +82,9 @@ Version: 1.o
 body {
     font-family:'Outfit';
     font-weight: 200;
-    background: var(--cream);
+    background: var(--bgCream);
     margin: 0;
-    color: #333;
-}
-
-body {
+    color: var(--textBlack);
     overflow-x: clip; /* modern replacement for hidden but allows sticky */
 }
 
@@ -61,7 +93,7 @@ body {
 /* ------------------ GLOBAL ELEMENTS ------------------ */
 h1, h2, h3, h4 {
     text-align: center;
-    color: #333;
+    color: var(--textBlack);
     font-family: "Autour One", "sans-serif";
 }
 
@@ -78,7 +110,7 @@ p, div {
 
 a {
     text-decoration: underline;
-    color:#333; 
+    color:var(--textBlack); 
 }
 
 
@@ -145,7 +177,7 @@ ul {
 }
 
 .divider-to-cream svg{
-    color: var(--cream);
+    color: var(--bgCream);
 }
 
 .divider-to-orange svg{
@@ -178,7 +210,7 @@ ul {
     top: 0;
     right: 0;
     left: 0;
-    background: var(--cream);
+    background: var(--bgCream);
     box-shadow: 0 4px 10px -4px rgba(0,0,0,0.08);
     transition: background 0.3s ease, box-shadow 0.3s ease;
 
@@ -190,7 +222,7 @@ header.site-header,
     z-index: 999;
 }
 .header-inner.scrolled {
-    background: rgba(255, 247, 236, 0.9); /* slightly transparent */
+    background: var(--transparentCreamBg);
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
@@ -204,7 +236,7 @@ header.site-header,
 
 .header-brandname {
     font-size: 1.7em;
-    color: var(--wood);
+    color: var(--textWood);
     font-family: 'Autour One';
     justify-self: flex-start;
 }
@@ -227,19 +259,19 @@ header.site-header,
 
 .main-navigation a {
     text-decoration: none;
-    color: var(--forest);
+    color: var(--textForest);
     font-weight: 500;
 }
 
 .main-navigation a:hover {
-    color: var(--wood);
+    color: var(--textWood);
 }
 
 
 /* ------------------ FOOTER ------------------ */
 .site-footer {
-    background-color: var(--cream);
-    color: var(--black);
+    background-color: var(--bgCream);
+    color: var(--textBlack);
     padding: 50px 20px;
     box-shadow: 0 -4px 10px -4px rgba(0,0,0,0.08);
 }
@@ -278,7 +310,7 @@ header.site-header,
 #footer-address,
 #footer-phone {
     flex-direction: column;
-    color: var(--wood);
+    color: var(--textWood);
 }
 
 #footer-address p,
@@ -304,7 +336,7 @@ header.site-header,
 
 .footer-cta-btn {
     background: var(--blue);
-    color: #fff;
+    color: var(--white);
     transition: color 0.3s;
 }
 
@@ -385,7 +417,7 @@ header.site-header,
     display: inline-block;
     padding: 1rem 2rem;
     background: var(--blue);
-    color: #fff;
+    color: var(--white);
     text-decoration: none;
     font-size: 1.25rem;
     border-radius: 8px;
@@ -412,12 +444,12 @@ header.site-header,
     padding-right: 0.2rem;
     margin-bottom: 1rem;
     margin-top: 3rem;
-    color: var(--forest);
+    color: var(--textForest);
     font-size: 2.1rem;
 }
 
 .intro p {
-    color: var(--black);
+    color: var(--textBlack);
 }
 
 .info-box {
@@ -427,11 +459,11 @@ header.site-header,
 }
 
 .info-box p {
-    color: var(--black);
+    color: var(--textBlack);
 }
 
 .info-box h1 {
-    color: var(--forest);
+    color: var(--textForest);
     padding-left: 2rem;
     padding-right: 2rem;
     margin-bottom: 1rem;
@@ -440,44 +472,44 @@ header.site-header,
 
 .green-bg {
     background-color: var(--sage);
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .green-bg h1 {
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .green-bg p {
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .orange-bg {
     background-color: var(--terracotta);
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .orange-bg h1 {
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .yellow-bg {
     background-color: var(--tipi);
-    color: var(--wood);
+    color: var(--woodToBlack);
 }
 
 .yellow-bg h1 {
-    color: var(--wood);
+    color: var(--woodToBlack);
 }
 
 
 .yellow-btn {
     background-color: var(--tipi);
-    color: var(--wood);
+    color: var(--woodToBlack);
 }
 
 .green-btn {
     background-color: var(--forest);
-    color: var(--cream);
+    color: var(--textCream);
 }
 
 .blue-btn {
@@ -529,7 +561,7 @@ header.site-header,
     height: 3px;
     margin: 5px 0;
     border-radius: 2px;
-    background: var(--forest);
+    background: var(--textForest);
     transition: all 0.3s ease;
 }
 
@@ -630,7 +662,7 @@ header.site-header,
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    color:var(--wood);
+    color:var(--textWood);
     
 }
 
@@ -772,7 +804,7 @@ font-weight: 400;
     .cooperative-page .section-box,
     .yellow-page .section-box
    {
-        border-top: var(--cream) 1px solid;
+        border-top: var(--bgCream) 1px solid;
     }
 
     .cream-page .section-box {
@@ -873,7 +905,7 @@ font-weight: 400;
 
     .home .hero-btn {
         padding: 2rem 4rem;
-        color: #fff;
+        color: var(--white);
         font-size: 2rem;
     }
 }
@@ -889,7 +921,7 @@ font-weight: 400;
 }
 
 .contact-wrapper h1 {
-    color: var(--forest);
+    color: var(--textForest);
     margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
@@ -937,7 +969,7 @@ font-weight: 400;
 
 /* Sheet (modal body) */
 .kids-sheet {
-    background: var(--cream);
+    background: var(--bgCream);
     width: 100%;
     max-width: 500px;  
     max-height: 80vh;
@@ -976,7 +1008,7 @@ font-weight: 400;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    color: var(--cream);
+    color: var(--textCream);
     padding: 14px 20px;
     border-radius: 50px;
     border: none;
@@ -1000,7 +1032,7 @@ font-weight: 400;
 /*Weather data in modal*/
 .weather-conditions-box {
     margin-top: 1rem;
-    background: #ffeed5;
+    background: var(--darkCreamBg);
     padding: 1rem;
     border-radius: 22px;
 }
@@ -1054,7 +1086,7 @@ margin: 0.2rem;
     position: absolute;
     right: 60px;
     background: #000;
-    color: #fff;
+    color: var(--white);
     padding: 6px 10px;
     border-radius: 8px;
     font-size: 12px;
