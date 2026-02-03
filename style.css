@@ -655,6 +655,7 @@ header.site-header,
     display: flex;
     flex-direction: column;
     padding-bottom: 3rem;
+    justify-content: center;
 }
 
 .staff-member {
@@ -663,7 +664,7 @@ header.site-header,
     justify-content: flex-start;
     align-items: center;
     color:var(--textWood);
-    
+     
 }
 
 .staff-image-wrapper {
@@ -686,13 +687,10 @@ header.site-header,
 font-weight: 400;
 }
 
-.staff-member-info {
-    text-align: center;
-}
 
 .staff-member-info p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
  }
 
 #staff-intro {
