@@ -6,6 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+ <!-- Tell browser the site supports both modes -->
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Optional: theme color for status bars -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
 <?php wp_head(); ?>
 </head>
