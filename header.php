@@ -56,5 +56,6 @@
 
         </div>
 </header>
+<?php mulleborg_render_announcement_banner(); ?>
 <main id="main-content" class="site-content" tabindex="-1">
     <div class="col-full">

@@ -548,8 +548,59 @@ function mulleborg_customize_register( $wp_customize ) {
         'type'     => 'checkbox',
     ));
 
+    $wp_customize->add_section( 'mulleborg_announcement_section', array(
+        'title'       => __( 'Avisering under sidhuvudet', 'mulleborg' ),
+        'description' => __( 'Visa en banderoll direkt under menyn när du vill nå ut med kort information, till exempel om ett kommande evenemang.', 'mulleborg' ),
+        'priority'    => 36,
+    ));
+
+    $wp_customize->add_setting( 'mulleborg_announcement_show', array(
+        'default'           => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+
+    $wp_customize->add_control( 'mulleborg_announcement_show', array(
+        'label'   => __( 'Visa avisering', 'mulleborg' ),
+        'section' => 'mulleborg_announcement_section',
+        'type'    => 'checkbox',
+    ));
+
+    $wp_customize->add_setting( 'mulleborg_announcement_text', array(
+        'default'           => '',
+        'sanitize_callback' => 'wp_kses_post',
+    ));
+
+    $wp_customize->add_control( 'mulleborg_announcement_text', array(
+        'label'       => __( 'Meddelande', 'mulleborg' ),
+        'description' => __( 'Enkel HTML går bra (t.ex. fetstil eller länk). Lämna tomt eller stäng av ovan när inget ska visas.', 'mulleborg' ),
+        'section'     => 'mulleborg_announcement_section',
+        'type'        => 'textarea',
+    ));
+
 }
 add_action( 'customize_register', 'mulleborg_customize_register' );
+
+/**
+ * Renders the optional site-wide announcement banner (controlled in Utseende → Anpassa).
+ */
+function mulleborg_render_announcement_banner() {
+    if ( ! get_theme_mod( 'mulleborg_announcement_show', false ) ) {
+        return;
+    }
+    $text = get_theme_mod( 'mulleborg_announcement_text', '' );
+    if ( $text === '' || trim( wp_strip_all_tags( $text ) ) === '' ) {
+        return;
+    }
+    ?>
+    <div class="site-announcement-banner" role="region" aria-label="<?php esc_attr_e( 'Viktigt meddelande', 'mulleborg' ); ?>">
+        <div class="site-announcement-banner__inner col-full">
+            <div class="site-announcement-banner__body">
+                <?php echo wp_kses_post( $text ); ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
 
 // Helper that returns 'idag' or 'imorgon' based on current time
 function mulleborg_get_day_label() {

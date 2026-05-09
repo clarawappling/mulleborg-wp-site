@@ -221,6 +221,52 @@ header.site-header,
     top: 0;
     z-index: 999;
 }
+
+/* Optional announcement under header (Customizer: Avisering under sidhuvudet) */
+.site-announcement-banner {
+    background: var(--blue);
+    color: var(--cream);
+    padding: 0.75rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.12);
+}
+
+.site-announcement-banner__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-announcement-banner__body {
+    font-family: 'Nunito', 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.site-announcement-banner__body p {
+    margin: 0.35em 0;
+    color: inherit;
+}
+
+.site-announcement-banner__body p:first-child {
+    margin-top: 0;
+}
+
+.site-announcement-banner__body p:last-child {
+    margin-bottom: 0;
+}
+
+.site-announcement-banner a {
+    color: var(--cream);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.site-announcement-banner a:hover {
+    color: var(--textCream);
+}
+
 .header-inner.scrolled {
     background: var(--transparentCreamBg);
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
